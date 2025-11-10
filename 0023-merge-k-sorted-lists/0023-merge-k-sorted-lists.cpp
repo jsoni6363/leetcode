@@ -35,9 +35,11 @@ public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         if(lists.size()==0) return NULL;
 
-        for(int i=1;i<lists.size();i++){
-            lists[i]=merge(lists[i],lists[i-1]);
-        }
-        return lists.back();
+        ListNode* head = lists[0];
+for (int i = 1; i < lists.size(); i++) {
+    head = merge(head, lists[i]);
+}
+return head;
+
     }
 };
