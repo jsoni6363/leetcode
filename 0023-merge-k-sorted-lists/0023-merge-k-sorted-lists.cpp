@@ -8,38 +8,48 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
-    ListNode* merge(ListNode* l1,ListNode* l2){
-         ListNode* dummy=new ListNode(-1);
-         ListNode* temp=dummy;
-         while(l1!=NULL && l2!=NULL){
-            if(l1->val<=l2->val){
-                temp->next=l1;
-                l1=l1->next;
-            }
-            else{
-                temp->next=l2;
-                l2=l2->next;
-            }
-            temp=temp->next;
-         }
-          if (l1 != NULL) {
-            temp->next = l1;
-        } else {
-            temp->next = l2;
-        }
-      return dummy->next;
-    }
-
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.size()==0) return NULL;
 
-        ListNode* head = lists[0];
-for (int i = 1; i < lists.size(); i++) {
-    head = merge(head, lists[i]);
-}
-return head;
+        // ✅ Min-heap (priority queue) that stores {value, pointer to node}
+        // We use "greater<>" so that smallest value is always on top
+        priority_queue<pair<int, ListNode*>,
+            vector<pair<int, ListNode*>>, greater<pair<int, ListNode*>>> pq;
 
+        // ✅ Step 1: Push the head node of each linked list into the heap
+        // Why? Each head contains the smallest element of that list
+        for (int i = 0; i < lists.size(); i++) {
+            if (lists[i]) { // list is not empty
+                pq.push({lists[i]->val, lists[i]});
+            }
+        }
+
+        // ✅ Create a dummy node to help build the merged result list easily
+        ListNode* dummy = new ListNode(-1);
+        ListNode* temp = dummy;  // temp will move along and build final list
+
+        // ✅ Step 2: Process the heap until all nodes are merged
+        while (!pq.empty()) {
+
+            // Get the smallest element from the heap
+            //we can use auto it=pq.top() too
+            pair<int, ListNode*> it = pq.top();
+            pq.pop();
+
+            // If this node has a next node, push the next node into the heap
+            // Why? Now this next node is the new candidate for smallest
+            if (it.second->next) {
+                pq.push({it.second->next->val, it.second->next});
+            }
+
+            // Attach the extracted node to the merged list
+            temp->next = it.second;
+            temp = temp->next;
+        }
+
+        // ✅ dummy->next is the actual head of the merged sorted list
+        return dummy->next;
     }
 };
