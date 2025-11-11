@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/jsoni6363/leetcode/tree/master/0001-two-sum) |
+| [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 ## Hash Table
 |  |
 | ------- |
@@ -20,6 +21,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0020-valid-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0020-valid-parentheses) |
+| [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 ## Linked List
 |  |
 | ------- |
@@ -45,4 +47,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0146-lru-cache](https://github.com/jsoni6363/leetcode/tree/master/0146-lru-cache) |
+## Simulation
+|  |
+| ------- |
+| [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 <!---LeetCode Topics End-->
