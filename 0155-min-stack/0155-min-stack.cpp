@@ -1,42 +1,39 @@
 class MinStack {
 public:
-    stack<int> stk;
-
-    MinStack() {}
-
+    stack<int> s;
+    MinStack() {
+        
+    }
+    
     void push(int val) {
-        stk.push(val);
+        s.push(val);
     }
-
+    
     void pop() {
-        stk.pop();
+        s.pop();
     }
-
+    
     int top() {
-        return stk.top();
+        return s.top();
     }
-
+    
     int getMin() {
-        stack<int> tmp;
-        int mini = stk.top();
+        int ans=INT_MAX;
 
-        // Step 1: Find the minimum by checking every element
-        while (!stk.empty()) {
-            mini = min(mini, stk.top());
-            tmp.push(stk.top());
-            stk.pop();
+        stack<int> temp;
+        while(!s.empty()){
+             ans=min(ans,s.top());
+             temp.push(s.top());
+             s.pop();
         }
 
-        // Step 2: Restore the original stack
-        while (!tmp.empty()) {
-            stk.push(tmp.top());
-            tmp.pop();
+        while(!temp.empty()){
+          s.push(temp.top());
+          temp.pop();
         }
-
-        return mini;
+        return ans;
     }
 };
-
 
 /**
  * Your MinStack object will be instantiated and called as such:
