@@ -1,45 +1,62 @@
+#include <stack>
+#include <iostream>
+using namespace std;
+
 class MinStack {
 public:
-    stack<int> s;
-    MinStack() {
-        
-    }
-    
+    stack<int> s;       // main stack (stores all elements)
+    stack<int> minS;    // helper stack (stores minimum at each level)
+
+    MinStack() {}
+
+    // -------------------------------
+    // PUSH operation
+    // -------------------------------
     void push(int val) {
+        // Always push the element in main stack
         s.push(val);
+
+        // If minS is empty, this element is the current minimum
+        if (minS.empty()) {
+            minS.push(val);
+        }
+        // Else, compare with the current minimum (top of minS)
+        else {
+            if (val < minS.top()) {
+                // If new value is smaller, push it as new minimum
+                minS.push(val);
+            } else {
+                // Otherwise, push the same previous minimum again
+                minS.push(minS.top());
+            }
+        }
     }
-    
+
+    // -------------------------------
+    // POP operation
+    // -------------------------------
     void pop() {
-        s.pop();
+        // Remove one element from both stacks
+        if (!s.empty()) {
+            s.pop();
+            minS.pop();
+        }
     }
-    
+
+    // -------------------------------
+    // TOP operation
+    // -------------------------------
     int top() {
-        return s.top();
+        if (!s.empty()) {
+            return s.top();  // return top element
+        }
+        return -1;  // if empty (shouldn’t happen as per constraints)
     }
-    
+
     int getMin() {
-        int ans=INT_MAX;
-
-        stack<int> temp;
-        while(!s.empty()){
-             ans=min(ans,s.top());
-             temp.push(s.top());
-             s.pop();
+        if (!minS.empty()) {
+            return minS.top();  // top of minS is the current minimum
         }
-
-        while(!temp.empty()){
-          s.push(temp.top());
-          temp.pop();
-        }
-        return ans;
+        return -1;  // if empty 
     }
 };
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack* obj = new MinStack();
- * obj->push(val);
- * obj->pop();
- * int param_3 = obj->top();
- * int param_4 = obj->getMin();
- */
