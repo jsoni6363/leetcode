@@ -10,6 +10,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0150-evaluate-reverse-polish-notation](https://github.com/jsoni6363/leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
 | [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 | [0735-asteroid-collision](https://github.com/jsoni6363/leetcode/tree/master/0735-asteroid-collision) |
+| [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
 ## Hash Table
 |  |
 | ------- |
@@ -28,6 +29,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0225-implement-stack-using-queues](https://github.com/jsoni6363/leetcode/tree/master/0225-implement-stack-using-queues) |
 | [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 | [0735-asteroid-collision](https://github.com/jsoni6363/leetcode/tree/master/0735-asteroid-collision) |
+| [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
 ## Linked List
 |  |
 | ------- |
@@ -68,4 +70,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0150-evaluate-reverse-polish-notation](https://github.com/jsoni6363/leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
+## Monotonic Stack
+|  |
+| ------- |
+| [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
 <!---LeetCode Topics End-->
