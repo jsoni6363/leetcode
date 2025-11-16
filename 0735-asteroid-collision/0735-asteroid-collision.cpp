@@ -1,41 +1,60 @@
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
-        vector<int> st;  // stack to store surviving asteroids
 
-        for (int a : asteroids) {
+        int n = asteroids.size();
 
-            // Case: a might collide only when a < 0 and st.back() > 0
-            while (!st.empty() && a < 0 && st.back() > 0) {
+        // j will act like the "top" of our stack
+        // j = -1 means the stack is empty
+        int j = -1;
 
-                int right = st.back();   // last asteroid (moving right)
-                int left = -a;           // abs value of left-moving asteroid
+        // Loop through each asteroid one by one
+        for (int& a : asteroids) {
 
-                // The right asteroid is smaller → destroy right one
-                if (right < left) {
-                    st.pop_back();
-                    // continue checking because new asteroid may hit more
+            // While there is a possibility of collision:
+            // j >= 0          → there is something in our stack
+            // asteroids[j] > 0 → the last asteroid is moving RIGHT
+            // a < 0           → current asteroid is moving LEFT
+            // Only (RIGHT →) facing (← LEFT) can collide
+            while (j >= 0 && asteroids[j] > 0 && a < 0) {
+
+                // Compare the last asteroid (right-moving)
+                // with the current left-moving asteroid.
+                if (asteroids[j] > abs(a)) {
+                    // Case 1: Right-moving asteroid is bigger
+                    // The new left-moving asteroid (a) explodes.
+                    a = 0;        // mark a as dead
+                    break;       // no more comparisons needed
                 }
-
-                // The right asteroid is bigger → destroy new asteroid
-                else if (right > left) {
-                    a = 0; // new asteroid dies
+                else if (asteroids[j] == abs(a)) {
+                    // Case 2: Both asteroids are same size
+                    // BOTH explode.
+                    j--;         // remove the right-moving asteroid
+                    a = 0;       // current asteroid also dies
+                    break;       // collision resolved
                 }
-
-                // Both equal → destroy both
-                else { // right == left
-                    st.pop_back();  // remove right asteroid
-                    a = 0;          // new asteroid also dies
+                else {
+                    // Case 3: Left-moving asteroid is bigger
+                    // The right-moving asteroid explodes.
+                    j--;        // pop the last asteroid in our "stack"
+                    // DO NOT break!
+                    // Because this left-moving asteroid (a)
+                    // might collide with more previous ones.
                 }
-
-                // if new asteroid dies → stop checking
-                if (a == 0) break;
             }
 
-            // If asteroid still survives after all collisions → push it
-            if (a != 0) st.push_back(a);
+            // If current asteroid is still alive (not destroyed):
+            if (a != 0) {
+                // Push asteroid into "stack" by moving j forward
+                // asteroids[++j] assigns new value to the next valid slot
+                asteroids[++j] = a;
+            }
         }
 
-        return st; // survivors
+        // Resize array to include only the surviving asteroids
+        asteroids.resize(j + 1);
+
+        // Return the final state
+        return asteroids;
     }
 };
