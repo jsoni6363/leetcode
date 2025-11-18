@@ -2,51 +2,64 @@ class Solution {
 public:
     string simplifyPath(string path) {
 
-        // Stack to store valid directory names
+        // This vector acts like a stack to store valid folder names
+        // Example: "/a/b/../c" -> stack becomes ["a", "c"]
         vector<string> stack;
 
-        // Temporary string to build the current token
-        string cur = "";
+        // This will temporarily store each part of the path
+        // For example, cur becomes:
+        // "" , "a", "", "b", "..", "c", ""
+        string cur;
 
-        // Add an extra '/' to ensure the last token gets processed
-        for (char c : path + "/") {
+        // stringstream allows us to break the path using '/' as a separator
+        stringstream ss(path);
 
-            // When we see a slash, we have reached the end of a token
-            if (c == '/') {
+        // Extract every substring between slashes '/'
+        // Example: "/a//b/../c/"
+        // getline → "" , "a" , "" , "b" , ".." , "c" , ""
+        while (getline(ss, cur, '/')) {
 
-                // Case 1: cur == ".." → go to parent directory
-                if (cur == "..") {
-                    if (!stack.empty()) {
-                        stack.pop_back();
-                    }
-                }
-
-                // Case 2: cur is a valid directory name
-                // Ignore:
-                //   - empty string ""  → happens with "//"
-                //   - "."              → current directory
-                else if (!cur.empty() && cur != ".") {
-                    stack.push_back(cur);
-                }
-
-                // Clear cur to start building the next token
-                cur.clear();
+            // CASE 1: Ignore empty tokens ("") and "." 
+            // "" comes from '//' (multiple slashes)
+            // "." means "current directory", so skip it
+            if (cur == "" || cur == ".") {
+                continue;
             }
 
-            // If it's not a slash, add to current token
+            // CASE 2: ".." means "go to parent directory"
+            // So remove the last stored folder from stack (if any)
+            else if (cur == "..") {
+                if (!stack.empty()) {
+                    stack.pop_back();  // go back one folder
+                }
+            }
+
+            // CASE 3: A regular folder name
+            // Example: "a", "b", "folder", "_home", "...", etc.
+            // Add it to the stack because it is part of the valid path
             else {
-                cur += c;
+                stack.push_back(cur);
             }
         }
 
-        // Build the final simplified path
+        // Now rebuild the final simplified path from stack contents
+        // Start with root slash
         string result = "/";
 
+        // Join all folder names with a single slash between them
         for (int i = 0; i < stack.size(); i++) {
-            if (i > 0) result += "/";
+
+            // Add slash before every folder except the first one
+            if (i > 0) {
+                result += "/";
+            }
+
+            // Add the folder name
             result += stack[i];
         }
 
+        // Return the simplified canonical path
+        // If stack is empty, result will stay "/", which is correct
         return result;
     }
 };
