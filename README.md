@@ -12,6 +12,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0735-asteroid-collision](https://github.com/jsoni6363/leetcode/tree/master/0735-asteroid-collision) |
 | [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
 | [0792-binary-search](https://github.com/jsoni6363/leetcode/tree/master/0792-binary-search) |
+| [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
 ## Hash Table
 |  |
@@ -42,6 +43,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0023-merge-k-sorted-lists](https://github.com/jsoni6363/leetcode/tree/master/0023-merge-k-sorted-lists) |
 | [0146-lru-cache](https://github.com/jsoni6363/leetcode/tree/master/0146-lru-cache) |
+| [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
 ## Divide and Conquer
 |  |
 | ------- |
@@ -60,6 +62,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0146-lru-cache](https://github.com/jsoni6363/leetcode/tree/master/0146-lru-cache) |
 | [0155-min-stack](https://github.com/jsoni6363/leetcode/tree/master/0155-min-stack) |
 | [0225-implement-stack-using-queues](https://github.com/jsoni6363/leetcode/tree/master/0225-implement-stack-using-queues) |
+| [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
 ## Doubly-Linked List
 |  |
 | ------- |
@@ -73,6 +76,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0225-implement-stack-using-queues](https://github.com/jsoni6363/leetcode/tree/master/0225-implement-stack-using-queues) |
+| [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
 ## Math
 |  |
 | ------- |
