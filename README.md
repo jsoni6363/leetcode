@@ -38,6 +38,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0735-asteroid-collision](https://github.com/jsoni6363/leetcode/tree/master/0735-asteroid-collision) |
 | [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
+| [0937-online-stock-span](https://github.com/jsoni6363/leetcode/tree/master/0937-online-stock-span) |
 ## Linked List
 |  |
 | ------- |
@@ -63,6 +64,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0155-min-stack](https://github.com/jsoni6363/leetcode/tree/master/0155-min-stack) |
 | [0225-implement-stack-using-queues](https://github.com/jsoni6363/leetcode/tree/master/0225-implement-stack-using-queues) |
 | [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
+| [0937-online-stock-span](https://github.com/jsoni6363/leetcode/tree/master/0937-online-stock-span) |
 ## Doubly-Linked List
 |  |
 | ------- |
@@ -86,6 +88,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
+| [0937-online-stock-span](https://github.com/jsoni6363/leetcode/tree/master/0937-online-stock-span) |
 ## Binary Search
 |  |
 | ------- |
@@ -98,4 +101,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
+## Data Stream
+|  |
+| ------- |
+| [0937-online-stock-span](https://github.com/jsoni6363/leetcode/tree/master/0937-online-stock-span) |
 <!---LeetCode Topics End-->
