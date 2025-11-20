@@ -1,88 +1,92 @@
 class MyCircularQueue {
 private:
-    // Singly linked list node (stores value and pointer to next node)
-    struct ListNode {
-        int val;
-        ListNode* next;
-        ListNode(int v) : val(v), next(nullptr) {}
-    };
 
-    int space;       // how many free slots remain (capacity - current size)
-    ListNode* left;  // left sentinel; left->next is the front element
-    ListNode* right; // pointer to the last real node (rear). When empty, right == left.
+    // Underlying storage for the queue — fixed size array
+    vector<int> queue;
+
+    // Number of elements currently inside the queue
+    int size;
+
+    // Index of the front element
+    int front;
+
+    // Index of the rear element
+    int rear;
+
+    // Maximum number of elements the queue can hold
+    int capacity;
 
 public:
-    // Constructor: create a queue with capacity k
+
+    // Constructor: initializes the circular queue with size k
     MyCircularQueue(int k) {
-        space = k;               // initially k free slots
-        left = new ListNode(0);  // left sentinel node (dummy)
-        right = left;            // when empty, right points to left sentinel
-        // left->next is implicitly nullptr => queue empty
+        
+        // Create a vector of size k to store the queue elements
+        queue = vector<int>(k);
+
+        size = 0;      // queue starts empty
+        front = 0;     // front index starts at 0
+        rear = -1;     // rear starts at -1 because queue is empty
+        capacity = k;  // store the maximum capacity
     }
 
-    // Insert value into the queue at the rear. Return true if succeeded.
+    // Insert an element into the circular queue
     bool enQueue(int value) {
-        if (isFull()) return false; // no free space available
-
-        // create a new node for the value
-        ListNode* cur = new ListNode(value);
-
-        if (isEmpty()) {
-            // If queue is empty, new node becomes the first element:
-            // left -> cur, and cur is also the rear
-            left->next = cur;
-            right = cur;
-        } else {
-            // If queue not empty, attach new node after current rear and update rear
-            right->next = cur;
-            right = cur;
+        
+        // If queue already full → cannot insert
+        if (isFull()) {
+            return false;
         }
 
-        // use one free slot
-        space--;
+        // Move rear to the next position circularly
+        // Using modulo ensures we wrap around when reaching last index
+        rear = (rear + 1) % capacity;
+
+        // Insert the value at the 'rear' position
+        queue[rear] = value;
+
+        // Increase the number of items
+        size++;
+
         return true;
     }
 
-    // Remove the front element. Return true if succeeded.
+    // Delete the front element from the circular queue
     bool deQueue() {
-        if (isEmpty()) return false; // nothing to remove
-
-        // node to remove is left->next (first real node)
-        ListNode* tmp = left->next;
-
-        // bypass tmp: left->next points to the node after tmp
-        left->next = left->next->next;
-
-        // free memory for removed node
-        delete tmp;
-
-        // If the queue becomes empty after removal, reset right to the sentinel
-        if (!left->next) {
-            right = left;
+        
+        // If queue is empty → nothing to remove
+        if (isEmpty()) {
+            return false;
         }
 
-        // one more free slot now
-        space++;
+        // Move front one position forward circularly
+        front = (front + 1) % capacity;
+
+        // One element removed → decrease size
+        size--;
+
         return true;
     }
 
-    // Return front value, or -1 if empty
+    // Get the front item of the queue
     int Front() {
-        return isEmpty() ? -1 : left->next->val;
+        // If empty return -1, else return element at index 'front'
+        return isEmpty() ? -1 : queue[front];
     }
 
-    // Return rear value, or -1 if empty
+    // Get the last item of the queue
     int Rear() {
-        return isEmpty() ? -1 : right->val;
+        // If empty return -1, else return element at index 'rear'
+        return isEmpty() ? -1 : queue[rear];
     }
 
-    // True if queue is empty
+    // Check if queue is empty
     bool isEmpty() {
-        return left->next == nullptr; // no real nodes between sentinel and end
+        return size == 0;
     }
 
-    // True if queue has no free space
+    // Check if queue is full
     bool isFull() {
-        return space == 0;
+        return size == capacity;
     }
 };
