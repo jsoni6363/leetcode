@@ -1,40 +1,42 @@
 
 class Solution {
-public:
-    // Global variable to
-    // store the diameter
-    int diameter = 0;  
 
-    // Function to calculate
-    // the height of a subtree
-    int calculateHeight(TreeNode* node) {
-        if (node == nullptr) {
+private:
+    // Function to calculate the height of
+    // the tree and update the diameter
+    int height(TreeNode* node, int& diameter) {
+        // Base case: If the node is null,
+        // return 0 indicating the
+        // height of an empty tree
+        if (!node) {
             return 0;
         }
 
         // Recursively calculate the
         // height of left and right subtrees
-        int leftHeight = calculateHeight(node->left);
-        int rightHeight = calculateHeight(node->right);
+        int lh = height(node->left, diameter);
+        int rh = height(node->right, diameter);
 
-        // Calculate the diameter at the current
-        // node and update the global variable
-        diameter = max(diameter, leftHeight + rightHeight);
+        // Update the diameter with the maximum
+        // of current diameter or sum of
+        // left and right heights
+        diameter = max(diameter, lh + rh);
 
-        // Return the height
-        // of the current subtree
-        return 1 + max(leftHeight, rightHeight);
+        // Return the height of
+        // the current node's subtree
+        return 1 + max(lh, rh);
     }
-
+public:
     // Function to find the
     // diameter of a binary tree
     int diameterOfBinaryTree(TreeNode* root) {
-        // Start the recursive
-        // traversal from the root
-        calculateHeight(root);
-
-        // Return the maximum diameter
-        // found during traversal
+        // Initialize the variable to
+        // store the diameter of the tree
+        int diameter = 0;
+        // Call the height function to traverse
+        // the tree and calculate diameter
+        height(root, diameter);
+        // Return the calculated diameter
         return diameter;
     }
 };
