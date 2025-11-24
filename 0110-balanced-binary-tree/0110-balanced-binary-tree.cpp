@@ -1,40 +1,57 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right)
+ *         : val(x), left(left), right(right) {}
+ * };
+ */
+
 class Solution {
 public:
 
-    // Function to compute the height of a subtree
+    // Function to return the height of a subtree
     int height(TreeNode* node) {
 
-        // Base case: empty subtree has height 0
-        if (node == NULL)
+        // If the subtree is empty, height = 0
+        if (node == NULL) 
             return 0;
 
-        // Height = 1 (current node) + height of larger subtree
-        return 1 + max(height(node->left), 
-                       height(node->right));
+        // Height of current node =
+        // 1 + maximum height of its left or right child
+        return 1 + max(height(node->left), height(node->right));
     }
 
-    // Function to check if a tree is height-balanced
+
     bool isBalanced(TreeNode* root) {
 
-        // Base case: an empty tree is balanced
+        // Empty tree is balanced
         if (root == NULL)
             return true;
 
-        // Compute the height of left and right subtrees
+        // Get height of left and right subtree
         int lh = height(root->left);
         int rh = height(root->right);
 
-        // If height difference is more than 1 → NOT balanced
+        // If height difference is more than 1 → not balanced
         if (abs(lh - rh) > 1)
             return false;
 
-        // Recursively check if left subtree is balanced
-        bool leftBalanced = isBalanced(root->left);
+        // Check if left subtree is balanced
+        bool left = isBalanced(root->left);
 
-        // Recursively check right subtree
-        bool rightBalanced = isBalanced(root->right);
+        // Check if right subtree is balanced
+        bool right = isBalanced(root->right);
 
-        // Entire tree is balanced only if both subtrees are balanced
-        return leftBalanced && rightBalanced;
+        // If any subtree is not balanced → return false
+        if (!left || !right)
+            return false;
+
+        // Otherwise tree is balanced
+        return true;
     }
 };
