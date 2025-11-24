@@ -1,31 +1,41 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        stack<pair<TreeNode*,TreeNode*>> s;
-        s.push({p,q});
 
-        while(!s.empty()){
-            auto [node1,node2] = s.top();
-            s.pop();
+        queue<TreeNode*> q1;
+        queue<TreeNode*> q2;
 
-            if(!node1 && !node2) continue;
-            if(!node1 || !node2 || node1->val!=node2->val) return false;
+        // Start BFS by pushing roots
+        q1.push(p);
+        q2.push(q);
 
-            s.push({node1->left,node2->left});
-            s.push({node1->right, node2->right});
+        // Continue while both queues have nodes
+        while (!q1.empty() && !q2.empty()) {
+
+            // Process nodes level by level
+            //from back cause size stays constant other wise increase na if from front 
+            for (int i = q1.size(); i > 0; i--) {
+
+                TreeNode* nodeP = q1.front(); q1.pop();
+                TreeNode* nodeQ = q2.front(); q2.pop();
+
+                // Case 1: both null → continue
+                if (!nodeP && !nodeQ) continue;
+
+                // Case 2: mismatch cases
+                if (!nodeP || !nodeQ || nodeP->val != nodeQ->val)
+                    return false;
+
+                // Case 3: add children to queues
+                q1.push(nodeP->left);
+                q1.push(nodeP->right);
+
+                q2.push(nodeQ->left);
+                q2.push(nodeQ->right);
+            }
         }
-        return true;
 
+        // If both queues finished at same time → trees are the same
+        return true;
     }
 };
