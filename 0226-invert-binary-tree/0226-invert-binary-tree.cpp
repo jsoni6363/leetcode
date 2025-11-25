@@ -13,25 +13,16 @@ class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
 
-        // If tree is empty, nothing to invert
+        // Base case: empty tree
         if (!root) return nullptr;
 
-        queue<TreeNode*> q;
-        q.push(root); // Start BFS from root
+        // Swap children
+        swap(root->left, root->right);
 
-        while (!q.empty()) {
+        // Recursively invert subtrees
+        invertTree(root->left);
+        invertTree(root->right);
 
-            TreeNode* node = q.front();
-            q.pop();
-
-            // Swap its children
-            swap(node->left, node->right);
-
-            // Add children to queue so we invert them later
-            if (node->left)  q.push(node->left);
-            if (node->right) q.push(node->right);
-        }
-
-        return root;
+        return root; // Return the root after inversion
     }
 };
