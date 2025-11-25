@@ -13,16 +13,24 @@ class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
 
-        // Base case: empty tree
         if (!root) return nullptr;
 
-        // Swap children
-        swap(root->left, root->right);
+        stack<TreeNode*> st;
+        st.push(root);
 
-        // Recursively invert subtrees
-        invertTree(root->left);
-        invertTree(root->right);
+        while (!st.empty()) {
 
-        return root; // Return the root after inversion
+            TreeNode* node = st.top();
+            st.pop();
+
+            // Swap children
+            swap(node->left, node->right);
+
+            // Push children to process later
+            if (node->left)  st.push(node->left);
+            if (node->right) st.push(node->right);
+        }
+
+        return root;
     }
 };
