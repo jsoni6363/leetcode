@@ -1,37 +1,26 @@
 class Solution {
 public:
+    vector<int> res;  // This will store the final answer
+
     vector<int> rightSideView(TreeNode* root) {
-        vector<int> res;  // stores final visible nodes
-        queue<TreeNode*> q; // queue for BFS
-        
-        if(root) 
-            q.push(root);  // Push root if it's not null
-        
-        while (!q.empty()) { // while queue still has nodes
-            TreeNode* rightSide = nullptr; // stores rightmost node of current level
-            int qLen = q.size(); // number of nodes in this level
+        dfs(root, 0); // start DFS at depth = 0
+        return res;
+    }
 
-            // Process exactly qLen nodes (one full level)
-            for (int i = 0; i < qLen; i++) {
-                TreeNode* node = q.front(); 
-                q.pop();  // pop the node
-                
-                if (node) { // Only consider valid nodes
-                    rightSide = node; // keep updating — last node ends up being rightmost
+    void dfs(TreeNode* node, int depth) {
+        if (!node) 
+            return; // Base case: if node is null, stop
 
-                    // Push children into queue for next level
-                    if(node->left) 
-                        q.push(node->left);
-                    if(node->right) 
-                        q.push(node->right);
-                }
-            }
-
-            // After finishing the level, add the rightmost node if it exists
-            if (rightSide) {
-                res.push_back(rightSide->val);
-            }
+        // If this level is not yet filled in res, add the current node
+        if (res.size() == depth) {
+            res.push_back(node->val);
+            // Why? Because we're visiting right subtree first,
+            // so the *first node visited at each depth* is always the rightmost one.
         }
-        return res; 
+
+        // Visit RIGHT child first, then LEFT child
+        dfs(node->right, depth + 1);
+        dfs(node->left, depth + 1);
+        // Order matters — right first ensures visibility from right side.
     }
 };
