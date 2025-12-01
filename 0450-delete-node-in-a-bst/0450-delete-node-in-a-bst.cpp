@@ -1,87 +1,62 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-
 class Solution {
 public:
-    TreeNode* deleteNode(TreeNode* root, int key) {
 
-        // BASE CASE:
-        // If tree is empty or we reach a NULL subtree → nothing to delete.
-        if (!root) 
+    // This function deletes a node with value == key and returns the updated tree root
+    TreeNode* deleteNode(TreeNode* root, int keyToDelete) {
+
+        // STEP 1: If root is empty, nothing to delete, just return
+        if (root == NULL) {
             return root;
-
-        // STEP 1: Search for the node using BST property
-
-        // If key is greater than current node's value,
-        // it must be present in the RIGHT subtree.
-        if (key > root->val) {
-            root->right = deleteNode(root->right, key);
-        } 
-        // If key is smaller than current node's value,
-        // it must be present in the LEFT subtree.
-        else if (key < root->val) {
-            root->left = deleteNode(root->left, key);
-        } 
-        // Else, key == root->val → this is the node to delete.
-        else {
-
-            // CASE 1: No LEFT child
-            // Replace this node with its RIGHT child
-            // (right child may be NULL too → leaf deletion).
-            if (!root->left) 
-                return root->right;
-
-            // CASE 2: No RIGHT child
-            // Replace this node with its LEFT child.
-            if (!root->right) 
-                return root->left;
-
-            // CASE 3: Node has BOTH left and right children.
-
-            // Find the inorder successor:
-            // → smallest value in the RIGHT subtree.
-           else {
-           // We are here when: key == root->val
-           // AND root has BOTH left and right children.
-
-           // STEP 3a: Find inorder successor (smallest in right subtree)
-          TreeNode* cur = root->right;    // go to right subtree
-           while (cur->left) {             // go as left as you can
-           cur = cur->left;
-          }
-          // Now: cur points to the node with the smallest value in right subtree.
-
-          // STEP 3b: Copy the successor's value into current node.
-         // This "replaces" the value to be deleted with the next bigger one.
-         root->val = cur->val;
-
-          // STEP 3c: Delete the 'duplicate' node (which held successor value) 
-         // from the right subtree.
-        // We call deleteNode on right subtree to remove that node.
-       root->right = deleteNode(root->right, root->val);
-         }
         }
-        // Return the (possibly updated) root pointer for this subtree.
+
+        // STEP 2: If the key is greater than current node value, move to right subtree
+        if (keyToDelete > root->val) {
+            // Recursive call to delete in right subtree
+            // Attach the returned updated subtree back
+            root->right = deleteNode(root->right, keyToDelete);
+        }
+
+        // STEP 3: If the key is smaller than current node value, move to left subtree
+        if (keyToDelete < root->val) {
+            // Recursive call to delete in left subtree
+            // Attach returned updated subtree back
+            root->left = deleteNode(root->left, keyToDelete);
+        }
+
+        // STEP 4: If key == current node value, this is the node we will delete
+        if (keyToDelete == root->val) {
+
+            // SUB–CASE 1:
+            // If left child is NULL, replace node with right child directly
+            if (root->left == NULL) {
+                return root->right;
+            }
+
+            // SUB–CASE 2:
+            // If right child is NULL, replace the node with left child directly
+            if (root->right == NULL) {
+                return root->left;
+            }
+
+            // SUB–CASE 3:
+            // Node has 2 children → find smallest node in the right subtree (inorder successor)
+            TreeNode* successor = root->right;
+
+            // Keep going left to find the minimum in right subtree
+            while (successor->left != NULL) {
+                successor = successor->left;
+                // This ensures we reach the smallest value node in the right subtree
+            }
+
+            // Copy successor value into current node (root)
+            root->val = successor->val;
+
+            // Delete the duplicate successor from the right subtree
+            // We pass root->val because it was replaced by successor
+            root->right = deleteNode(root->right, root->val);
+        }
+
+        // STEP 5: return the updated root
         return root;
     }
 };
