@@ -1,62 +1,32 @@
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;                   // To store nodes in Root->Right->Left order
+        stack<TreeNode*> stack;            // Stack used for backtracking
+        TreeNode* cur = root;              // Pointer to traverse tree
 
-        // Stack to store nodes of the tree
-        stack<TreeNode*> stk;
+        // Continue while there is a node to explore OR stack has nodes to backtrack to
+        while (cur || !stack.empty()) {
 
-        // Stack to store visited flags for corresponding nodes in stk
-        // false = first time seeing the node
-        // true  = node is revisited after scheduling its children
-        stack<bool> visit;
-
-        // Result vector to store final postorder traversal
-        vector<int> res;
-
-        // Begin by pushing root into stack with visited = false
-        stk.push(root);
-        visit.push(false);
-
-        // Run until there are no nodes left to process
-        while (!stk.empty()) {
-
-            // Extract the top node and its visited status
-            TreeNode* cur = stk.top();
-            bool v = visit.top();
-
-            // Pop from both stacks to process it
-            stk.pop();
-            visit.pop();
-
-            // If current node exists (not null)
+            // 🔹 Case 1: We are going down the RIGHT side
             if (cur) {
+                res.push_back(cur->val);   // Store root first (but this is reversed order)
+                stack.push(cur);           // Remember this node for later when going left
+                cur = cur->right;          // Move right first
+            }
 
-                // If it's revisited (visited flag was true) → we process it now
-                if (v) {
-                    res.push_back(cur->val); 
-                    // Because left and right children were already scheduled,
-                    // we now safely add root to traversal output
-                }
-
-                // Else, this is the first time we see this node
-                else {
-                    // We want to process cur AFTER children, so push it back marked visited=true
-                    stk.push(cur);
-                    visit.push(true);
-
-                    // Now schedule cur’s right and left children (visited=false)
-                    // Right goes first so that left is processed before right (due to LIFO order)
-
-                    stk.push(cur->right);
-                    visit.push(false);
-
-                    stk.push(cur->left);
-                    visit.push(false);
-                }
+            // 🔸 Case 2: cur is NULL, means right branch is exhausted, so BACKTRACK
+            else {
+                cur = stack.top();         // Come back to last stored node
+                stack.pop();               // Remove it from stack since we are processing its left now
+                cur = cur->left;           // Switch to left subtree now
             }
         }
 
-        // Return the complete postorder result
-        return res;
+        // Now res contains: Root → Right → Left
+        // Reverse it so it becomes: Left → Right → Root (POSTORDER)
+        reverse(res.begin(), res.end());
+
+        return res; // Return final postorder traversal
     }
 };
