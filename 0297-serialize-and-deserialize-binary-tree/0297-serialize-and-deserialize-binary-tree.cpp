@@ -1,191 +1,99 @@
 class Codec {
-    public:
+public:
 
     /**
-     * =========================================================
-     * SERIALIZE
-     * =========================================================
-     * Converts a binary tree into ONE string.
-     *
-     * Idea:
-     * - Traverse the tree using preorder DFS (root → left → right)
-     * - Store values as strings
-     * - Store "N" for NULL nodes
-     * - Join everything using commas
+     * =====================================================
+     * SERIALIZATION (BFS / LEVEL ORDER)
+     * =====================================================
+     * Converts a binary tree into a string using level order.
      */
     string serialize(TreeNode* root) {
 
-        // This vector will store all node values + "N" for nulls
-        vector<string> result;
+        // If tree is empty, return just "N"
+        if (!root) return "N";
 
-        // Perform preorder DFS and fill 'result'
-        dfsSerialize(root, result);
+        // This string will store the serialized result
+        string res;
 
-        // Join all elements into one comma-separated string
-        // Example:
-        // ["1","2","N","N","3"] → "1,2,N,N,3"
-        return join(result, ",");
+        // Queue for BFS traversal
+        queue<TreeNode*> q;
+
+        // Start BFS from root
+        q.push(root);
+
+        // Process nodes level by level
+        while (!q.empty()) {
+
+            // Take the front node
+            TreeNode* node = q.front();
+            q.pop();
+
+            // If node is NULL, record "N"
+            if (!node) {
+                res += "N,";
+            }
+            else {
+                // Store current node value
+                res += to_string(node->val) + ",";
+
+                // Push left and right children
+                // (even if they are NULL)
+                q.push(node->left);
+                q.push(node->right);
+            }
+        }
+
+        // Return final serialized string
+        return res;
     }
 
     /**
-     * =========================================================
-     * DESERIALIZE
-     * =========================================================
-     * Converts the serialized string back into the SAME tree.
-     *
-     * Idea:
-     * - Split the string by commas
-     * - Use DFS to rebuild tree in preorder
-     * - Use an index to track where we are in the list
+     * =====================================================
+     * DESERIALIZATION (BFS / LEVEL ORDER)
+     * =====================================================
+     * Rebuilds the binary tree from the serialized string.
      */
     TreeNode* deserialize(string data) {
 
-        // Split the string into individual values
-        // Example:
-        // "1,2,N,N,3" → ["1","2","N","N","3"]
-        vector<string> values = split(data, ',');
+        // Use stringstream to read comma-separated values
+        stringstream ss(data);
+        string val;
 
-        // This index moves forward as we rebuild the tree
-        int index = 0;
+        // Read the first value (root)
+        getline(ss, val, ',');
 
-        // Rebuild the tree using DFS
-        return dfsDeserialize(values, index);
-    }
+        // If root is NULL
+        if (val == "N") return nullptr;
 
-private:
+        // Create root node
+        TreeNode* root = new TreeNode(stoi(val));
 
-    /**
-     * =========================================================
-     * DFS SERIALIZATION (Preorder Traversal)
-     * =========================================================
-     * This function converts the tree into a list of strings.
-     *
-     * Rules:
-     * - If node is NULL → push "N"
-     * - Otherwise:
-     *     1. Push node value
-     *     2. Serialize left subtree
-     *     3. Serialize right subtree
-     */
-    void dfsSerialize(TreeNode* node, vector<string>& result) {
+        // Queue to rebuild tree level by level
+        queue<TreeNode*> q;
+        q.push(root);
 
-        // Base case: if node is NULL
-        if (!node) {
-            // Store "N" to represent NULL
-            result.push_back("N");
-            return;
+        // Process remaining values
+        while (!q.empty()) {
+
+            // Get the current parent node
+            TreeNode* node = q.front();
+            q.pop();
+
+            // Read LEFT child value
+            if (!getline(ss, val, ',')) break;
+            if (val != "N") {
+                node->left = new TreeNode(stoi(val));
+                q.push(node->left);
+            }
+
+            // Read RIGHT child value
+            if (!getline(ss, val, ',')) break;
+            if (val != "N") {
+                node->right = new TreeNode(stoi(val));
+                q.push(node->right);
+            }
         }
 
-        // Convert node value (int) to string and store it
-        result.push_back(to_string(node->val));
-
-        // Recursively serialize left child
-        dfsSerialize(node->left, result);
-
-        // Recursively serialize right child
-        dfsSerialize(node->right, result);
-    }
-
-    /**
-     * =========================================================
-     * DFS DESERIALIZATION
-     * =========================================================
-     * This function rebuilds the tree from the list of values.
-     *
-     * 'index' is passed by reference so all recursive calls
-     * move forward in the SAME list.
-     */
-    TreeNode* dfsDeserialize(vector<string>& values, int& index) {
-
-        // If current value is "N", this represents a NULL node
-        if (values[index] == "N") {
-            index++;        // Move to next value
-            return NULL;
-        }
-
-        // Convert string to integer and create new node
-        TreeNode* node = new TreeNode(stoi(values[index]));
-        index++;            // Move index forward
-
-        // Recursively rebuild left subtree
-        node->left = dfsDeserialize(values, index);
-
-        // Recursively rebuild right subtree
-        node->right = dfsDeserialize(values, index);
-
-        // Return the constructed node
-        return node;
-    }
-
-    /**
-     * =========================================================
-     * SPLIT FUNCTION
-     * =========================================================
-     * Purpose:
-     * Break ONE long string into MANY smaller strings
-     * using a delimiter.
-     *
-     * Example:
-     * s = "1,2,N,N,3"
-     * delim = ','
-     *
-     * Output:
-     * ["1", "2", "N", "N", "3"]
-     */
-    vector<string> split(const string &s, char delim) {
-
-        // This vector will store split parts
-        vector<string> elems;
-
-        // Treat the string like a readable stream
-        stringstream ss(s);
-
-        // Temporary variable to store each extracted piece
-        string item;
-
-        /**
-         * getline():
-         * - Reads characters from 'ss'
-         * - Stops when it finds 'delim'
-         * - Stores the read part into 'item'
-         */
-        while (getline(ss, item, delim)) {
-            elems.push_back(item);
-        }
-
-        return elems;
-    }
-
-    /**
-     * =========================================================
-     * JOIN FUNCTION
-     * =========================================================
-     * Purpose:
-     * Combine MANY strings into ONE string using a delimiter.
-     *
-     * Example:
-     * v = ["1","2","N","N","3"]
-     * delim = ","
-     *
-     * Output:
-     * "1,2,N,N,3"
-     */
-    string join(const vector<string> &v, const string &delim) {
-
-        // Used to build strings efficiently
-        ostringstream ss;
-
-        for (int i = 0; i < v.size(); i++) {
-
-            // Add delimiter before every element except the first
-            if (i > 0)
-                ss << delim;
-
-            // Add current value
-            ss << v[i];
-        }
-
-        // Convert stream to string and return
-        return ss.str();
+        return root;
     }
 };
