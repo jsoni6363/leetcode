@@ -24,6 +24,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0020-valid-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0020-valid-parentheses) |
 | [0071-simplify-path](https://github.com/jsoni6363/leetcode/tree/master/0071-simplify-path) |
+| [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0394-decode-string](https://github.com/jsoni6363/leetcode/tree/master/0394-decode-string) |
 ## Stack
 |  |
@@ -66,6 +67,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0146-lru-cache](https://github.com/jsoni6363/leetcode/tree/master/0146-lru-cache) |
 | [0155-min-stack](https://github.com/jsoni6363/leetcode/tree/master/0155-min-stack) |
 | [0225-implement-stack-using-queues](https://github.com/jsoni6363/leetcode/tree/master/0225-implement-stack-using-queues) |
+| [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
 | [0937-online-stock-span](https://github.com/jsoni6363/leetcode/tree/master/0937-online-stock-span) |
 ## Doubly-Linked List
@@ -123,6 +125,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0199-binary-tree-right-side-view](https://github.com/jsoni6363/leetcode/tree/master/0199-binary-tree-right-side-view) |
 | [0226-invert-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0226-invert-binary-tree) |
 | [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/jsoni6363/leetcode/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
+| [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
 | [0450-delete-node-in-a-bst](https://github.com/jsoni6363/leetcode/tree/master/0450-delete-node-in-a-bst) |
 | [0543-diameter-of-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0543-diameter-of-binary-tree) |
@@ -144,6 +147,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0199-binary-tree-right-side-view](https://github.com/jsoni6363/leetcode/tree/master/0199-binary-tree-right-side-view) |
 | [0226-invert-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0226-invert-binary-tree) |
 | [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/jsoni6363/leetcode/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
+| [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
 | [0543-diameter-of-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0543-diameter-of-binary-tree) |
 | [0572-subtree-of-another-tree](https://github.com/jsoni6363/leetcode/tree/master/0572-subtree-of-another-tree) |
@@ -164,6 +168,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0199-binary-tree-right-side-view](https://github.com/jsoni6363/leetcode/tree/master/0199-binary-tree-right-side-view) |
 | [0226-invert-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0226-invert-binary-tree) |
 | [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/jsoni6363/leetcode/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
+| [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
 | [0450-delete-node-in-a-bst](https://github.com/jsoni6363/leetcode/tree/master/0450-delete-node-in-a-bst) |
 | [0543-diameter-of-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0543-diameter-of-binary-tree) |
@@ -179,6 +184,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0104-maximum-depth-of-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0104-maximum-depth-of-binary-tree) |
 | [0199-binary-tree-right-side-view](https://github.com/jsoni6363/leetcode/tree/master/0199-binary-tree-right-side-view) |
 | [0226-invert-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0226-invert-binary-tree) |
+| [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [1448-count-good-nodes-in-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/1448-count-good-nodes-in-binary-tree) |
 ## Binary Search Tree
 |  |
