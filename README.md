@@ -8,6 +8,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0001-two-sum](https://github.com/jsoni6363/leetcode/tree/master/0001-two-sum) |
 | [0150-evaluate-reverse-polish-notation](https://github.com/jsoni6363/leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
+| [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
 | [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 | [0735-asteroid-collision](https://github.com/jsoni6363/leetcode/tree/master/0735-asteroid-collision) |
 | [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
@@ -53,6 +54,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0023-merge-k-sorted-lists](https://github.com/jsoni6363/leetcode/tree/master/0023-merge-k-sorted-lists) |
+| [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
 ## Heap (Priority Queue)
 |  |
 | ------- |
@@ -127,6 +129,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/jsoni6363/leetcode/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
+| [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
 | [0450-delete-node-in-a-bst](https://github.com/jsoni6363/leetcode/tree/master/0450-delete-node-in-a-bst) |
 | [0543-diameter-of-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0543-diameter-of-binary-tree) |
 | [0572-subtree-of-another-tree](https://github.com/jsoni6363/leetcode/tree/master/0572-subtree-of-another-tree) |
@@ -206,4 +209,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0124-binary-tree-maximum-path-sum](https://github.com/jsoni6363/leetcode/tree/master/0124-binary-tree-maximum-path-sum) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
+## Matrix
+|  |
+| ------- |
+| [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
 <!---LeetCode Topics End-->
