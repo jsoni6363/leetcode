@@ -15,59 +15,75 @@ public:
     /*
      kthSmallest(...)
      ----------------
-     Finds the kth smallest value in a BST
-     using inorder traversal.
+     Finds the kth smallest element in a BST
+     using iterative inorder traversal.
     */
     int kthSmallest(TreeNode* root, int k) {
 
-        /*
-         tmp[0] → remaining k
-         tmp[1] → stores the answer
-        */
-        vector<int> tmp(2);
+        // Stack to simulate recursion
+        stack<TreeNode*> stack;
 
-        // Initialize remaining count
-        tmp[0] = k;
-
-        // Start inorder traversal
-        dfs(root, tmp);
-
-        // After traversal, tmp[1] holds the answer
-        return tmp[1];
-    }
-
-    /*
-     dfs(node, tmp)
-     --------------
-     Performs inorder traversal:
-     Left → Node → Right
-    */
-    void dfs(TreeNode* node, vector<int>& tmp) {
-
-        // Base case: empty node
-        if (!node) return;
-
-        // 1️⃣ Visit left subtree
-        dfs(node->left, tmp);
+        // Pointer to traverse the tree
+        TreeNode* curr = root;
 
         /*
-         2️⃣ Process current node
-         Since inorder traversal visits nodes
-         in sorted order, we decrement k.
+         We continue looping as long as:
+         - There are nodes in the stack
+         OR
+         - We still have nodes to explore
         */
-        tmp[0]--;
+        while (!stack.empty() || curr != nullptr) {
 
-        /*
-         If tmp[0] becomes 0,
-         this means we have reached
-         the kth smallest element.
-        */
-        if (tmp[0] == 0) {
-            tmp[1] = node->val; // store answer
-            return;             // stop further work
+            // =========================
+            // STEP 1: Go to the leftmost node
+            // =========================
+
+            /*
+             Push all left children onto the stack.
+             This mimics recursive inorder traversal.
+            */
+            while (curr != nullptr) {
+                stack.push(curr);
+                curr = curr->left;
+            }
+
+            // =========================
+            // STEP 2: Process current node
+            // =========================
+
+            /*
+             Pop the top node from the stack.
+             This is the next node in sorted order.
+            */
+            curr = stack.top();
+            stack.pop();
+
+            // We have visited one node, so decrement k
+            k--;
+
+            /*
+             If k becomes 0, this means:
+             - We have reached the kth smallest element
+             - Return its value immediately
+            */
+            if (k == 0) {
+                return curr->val;
+            }
+
+            // =========================
+            // STEP 3: Visit right subtree
+            // =========================
+
+            /*
+             Move to the right child to continue inorder traversal.
+            */
+            curr = curr->right;
         }
 
-        // 3️⃣ Visit right subtree
-        dfs(node->right, tmp);
+        /*
+         This return is just for safety.
+         Problem guarantees k is valid.
+        */
+        return -1;
     }
 };
