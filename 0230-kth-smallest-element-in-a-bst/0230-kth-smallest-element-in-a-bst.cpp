@@ -1,89 +1,103 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
-
     /*
      kthSmallest(...)
      ----------------
      Finds the kth smallest element in a BST
-     using iterative inorder traversal.
+     using Morris inorder traversal.
+
+     Time  : O(n)
+     Space : O(1)
     */
     int kthSmallest(TreeNode* root, int k) {
 
-        // Stack to simulate recursion
-        stack<TreeNode*> stack;
-
-        // Pointer to traverse the tree
+        // Pointer used to traverse the tree
         TreeNode* curr = root;
 
-        /*
-         We continue looping as long as:
-         - There are nodes in the stack
-         OR
-         - We still have nodes to explore
-        */
-        while (!stack.empty() || curr != nullptr) {
+        // To store the answer once found
+        int answer = -1;
+
+        // Traverse the tree
+        while (curr != nullptr) {
 
             // =========================
-            // STEP 1: Go to the leftmost node
+            // CASE 1: No left child
             // =========================
+            if (curr->left == nullptr) {
 
-            /*
-             Push all left children onto the stack.
-             This mimics recursive inorder traversal.
-            */
-            while (curr != nullptr) {
-                stack.push(curr);
-                curr = curr->left;
+                /*
+                 If there is no left subtree,
+                 this node is visited immediately
+                 in inorder traversal.
+                */
+                k--;
+
+                // If k becomes 0, we found the answer
+                if (k == 0) {
+                    answer = curr->val;
+                }
+
+                // Move to right subtree
+                curr = curr->right;
             }
 
             // =========================
-            // STEP 2: Process current node
+            // CASE 2: Left child exists
             // =========================
+            else {
 
-            /*
-             Pop the top node from the stack.
-             This is the next node in sorted order.
-            */
-            curr = stack.top();
-            stack.pop();
+                /*
+                 Find inorder predecessor:
+                 rightmost node in left subtree
+                */
+                TreeNode* pred = curr->left;
 
-            // We have visited one node, so decrement k
-            k--;
+                while (pred->right != nullptr && pred->right != curr) {
+                    pred = pred->right;
+                }
 
-            /*
-             If k becomes 0, this means:
-             - We have reached the kth smallest element
-             - Return its value immediately
-            */
-            if (k == 0) {
-                return curr->val;
+                // -------------------------
+                // FIRST visit to curr
+                // -------------------------
+                if (pred->right == nullptr) {
+
+                    /*
+                     Create a temporary link
+                     so we can return to curr
+                     after finishing left subtree
+                    */
+                    pred->right = curr;
+
+                    // Move to left subtree
+                    curr = curr->left;
+                }
+
+                // -------------------------
+                // SECOND visit to curr
+                // -------------------------
+                else {
+
+                    /*
+                     Left subtree already processed.
+                     Remove the temporary link
+                     to restore original tree.
+                    */
+                    pred->right = nullptr;
+
+                    // Visit current node
+                    k--;
+
+                    if (k == 0) {
+                        answer = curr->val;
+                    }
+
+                    // Move to right subtree
+                    curr = curr->right;
+                }
             }
-
-            // =========================
-            // STEP 3: Visit right subtree
-            // =========================
-
-            /*
-             Move to the right child to continue inorder traversal.
-            */
-            curr = curr->right;
         }
 
-        /*
-         This return is just for safety.
-         Problem guarantees k is valid.
-        */
-        return -1;
+        // Return the stored answer
+        return answer;
     }
 };
