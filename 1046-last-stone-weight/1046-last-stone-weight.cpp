@@ -3,48 +3,76 @@ public:
     int lastStoneWeight(vector<int>& stones) {
 
         // ============================
-        // STEP 1: Create a MAX HEAP
+        // STEP 1: Sort stones initially
         // ============================
-        // priority_queue<int> is a max heap by default in C++
-        // The largest element will always be at the top
-        priority_queue<int> maxHeap;
+        // After sorting:
+        // smallest stone -> index 0
+        // largest stone  -> index n-1
+        sort(stones.begin(), stones.end());
 
-        // Insert all stone weights into the heap
-        for (int s : stones) {
-            maxHeap.push(s);
-        }
+        // 'n' represents number of active stones
+        int n = stones.size();
 
         // ============================
-        // STEP 2: Smash stones until only one remains
+        // STEP 2: Smash stones while more than one exists
         // ============================
-        while (maxHeap.size() > 1) {
+        while (n > 1) {
 
-            // Take the heaviest stone
-            int first = maxHeap.top();
-            maxHeap.pop();
+            // Take the two largest stones
+            int heaviest = stones[n - 1];
+            int secondHeaviest = stones[n - 2];
 
-            // Take the second heaviest stone
-            int second = maxHeap.top();
-            maxHeap.pop();
+            // Smash them
+            int cur = heaviest - secondHeaviest;
+
+            // Remove the two stones logically
+            n -= 2;
 
             // ============================
-            // STEP 3: Smash them
+            // STEP 3: Insert remaining stone (if any)
             // ============================
-            // If both stones are equal, they cancel out
-            // If not equal, push the remaining weight back
-            if (first > second) {
-                maxHeap.push(first - second);
+            if (cur > 0) {
+
+                // Find the correct position to insert 'cur'
+                // so that stones[0..n-1] remains sorted
+
+                int l = 0, r = n;
+
+                // Binary search for insertion position
+                while (l < r) {
+                    int mid = (l + r) / 2;
+
+                    if (stones[mid] < cur) {
+                        l = mid + 1;
+                    } else {
+                        r = mid;
+                    }
+                }
+
+                // 'pos' is the index where 'cur' should be inserted
+                int pos = l;
+
+                // Expand vector by one space
+                stones.push_back(0);
+
+                // Shift elements right to make space
+                for (int i = n + 1; i > pos; i--) {
+                    stones[i] = stones[i - 1];
+                }
+
+                // Insert the new stone
+                stones[pos] = cur;
+
+                // Increase active stone count
+                n++;
             }
-            // If first == second → both destroyed → do nothing
         }
 
         // ============================
-        // STEP 4: Handle empty heap case
+        // STEP 4: Return answer
         // ============================
-        // If heap is empty, push 0 so we can safely return top()
-        maxHeap.push(0);
-
-        // The remaining stone (or 0)
-        return maxHeap.top();
+        // If one stone remains, return it
+        // Else return 0
+        return n > 0 ? stones[0] : 0;
     }
 };
