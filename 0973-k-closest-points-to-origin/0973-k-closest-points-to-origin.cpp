@@ -3,34 +3,59 @@ public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
 
         // ==================================================
-        // STEP 1: Sort points based on distance from origin
+        // STEP 1: Create a MAX HEAP
         // ==================================================
-        // We use a custom comparator (lambda function)
-        // to compare two points 'a' and 'b'
+        // Heap stores elements in the form:
+        // {distance_from_origin, {x, y}}
         //
-        // Distance formula (without sqrt):
-        // a -> a[0]^2 + a[1]^2
-        // b -> b[0]^2 + b[1]^2
-        //
-        // If distance of 'a' is smaller, 'a' comes first
-        sort(points.begin(), points.end(),
-             [](const auto& a, const auto& b) {
-
-                 // Squared distance of point 'a'
-                 int distA = a[0] * a[0] + a[1] * a[1];
-
-                 // Squared distance of point 'b'
-                 int distB = b[0] * b[0] + b[1] * b[1];
-
-                 // Sort in increasing order of distance
-                 return distA < distB;
-             });
+        // priority_queue in C++ is a MAX HEAP by default,
+        // meaning the element with the largest distance
+        // will be at the top
+        priority_queue<pair<int, pair<int, int>>> maxHeap;
 
         // ==================================================
-        // STEP 2: Return first 'k' points
+        // STEP 2: Iterate through all points
         // ==================================================
-        // Since the points are now sorted by distance,
-        // the first 'k' points are the closest to origin
-        return vector<vector<int>>(points.begin(), points.begin() + k);
+        for (auto& point : points) {
+
+            // Calculate squared distance from origin
+            // (no sqrt needed because ordering is preserved)
+            int dist = point[0] * point[0] + point[1] * point[1];
+
+            // Push current point into the heap
+            maxHeap.push({dist, {point[0], point[1]}});
+
+            // ==================================================
+            // STEP 3: Maintain heap size = k
+            // ==================================================
+            // If heap size exceeds k,
+            // remove the farthest point (heap top)
+            if (maxHeap.size() > k) {
+                maxHeap.pop();
+            }
+        }
+
+        // ==================================================
+        // STEP 4: Extract k closest points from heap
+        // ==================================================
+        vector<vector<int>> res;
+
+        while (!maxHeap.empty()) {
+
+            // Get the point coordinates from heap
+            res.push_back({
+                maxHeap.top().second.first,   // x-coordinate
+                maxHeap.top().second.second   // y-coordinate
+            });
+
+            // Remove the extracted point
+            maxHeap.pop();
+        }
+
+        // ==================================================
+        // STEP 5: Return result
+        // ==================================================
+        // Order does NOT matter as per problem statement
+        return res;
     }
 };
