@@ -15,6 +15,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0792-binary-search](https://github.com/jsoni6363/leetcode/tree/master/0792-binary-search) |
 | [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
+| [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [1046-last-stone-weight](https://github.com/jsoni6363/leetcode/tree/master/1046-last-stone-weight) |
 ## Hash Table
 |  |
@@ -56,11 +57,13 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0023-merge-k-sorted-lists](https://github.com/jsoni6363/leetcode/tree/master/0023-merge-k-sorted-lists) |
 | [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
+| [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 ## Heap (Priority Queue)
 |  |
 | ------- |
 | [0023-merge-k-sorted-lists](https://github.com/jsoni6363/leetcode/tree/master/0023-merge-k-sorted-lists) |
 | [0703-kth-largest-element-in-a-stream](https://github.com/jsoni6363/leetcode/tree/master/0703-kth-largest-element-in-a-stream) |
+| [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [1046-last-stone-weight](https://github.com/jsoni6363/leetcode/tree/master/1046-last-stone-weight) |
 ## Merge Sort
 |  |
@@ -94,6 +97,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0150-evaluate-reverse-polish-notation](https://github.com/jsoni6363/leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
+| [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 ## Monotonic Stack
 |  |
 | ------- |
@@ -112,6 +116,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
+| [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 ## Data Stream
 |  |
 | ------- |
@@ -225,4 +230,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
+## Geometry
+|  |
+| ------- |
+| [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
+## Quickselect
+|  |
+| ------- |
+| [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 <!---LeetCode Topics End-->
