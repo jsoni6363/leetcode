@@ -2,64 +2,83 @@ class Solution {
 public:
     vector<int> getOrder(vector<vector<int>>& tasks) {
 
-        // Min-heap of available tasks:
-        // {processingTime, index}
-        // CPU picks the smallest processingTime, then smaller index
-        priority_queue<
-            pair<int, int>,
-            vector<pair<int, int>>,
-            greater<>
-        > available;
-
-        // Min-heap of pending (future) tasks:
-        // {enqueueTime, processingTime, index}
-        // Sorted by earliest enqueueTime
-        priority_queue<
-            array<int, 3>,
-            vector<array<int, 3>>,
-            greater<>
-        > pending;
-
         int n = tasks.size();
 
-        // Push all tasks into pending heap
+        // --------------------------------------------------
+        // Step 1: Attach original index to each task
+        // Each task becomes:
+        // [enqueueTime, processingTime, originalIndex]
+        // --------------------------------------------------
         for (int i = 0; i < n; ++i) {
-            pending.push({tasks[i][0], tasks[i][1], i});
+            tasks[i].push_back(i);
         }
 
-        vector<int> result;      // Stores execution order
-        long long time = 0;      // Current CPU time
+        // --------------------------------------------------
+        // Step 2: Sort tasks by enqueueTime
+        // Because of vector ordering, sorting happens as:
+        // 1) enqueueTime
+        // 2) processingTime (if tie)
+        // 3) index (if tie)
+        // --------------------------------------------------
+        sort(tasks.begin(), tasks.end());
 
-        // Continue while there are tasks either waiting or available
-        while (!pending.empty() || !available.empty()) {
+        // Result vector to store execution order
+        vector<int> res;
 
-            // Move all tasks that have arrived by 'time' into available heap
-            while (!pending.empty() && pending.top()[0] <= time) {
-                auto [enqueueTime, processTime, index] = pending.top();
-                pending.pop();
+        // --------------------------------------------------
+        // Min-heap for available tasks
+        // Stores: {processingTime, index}
+        // CPU always picks task with smallest processingTime
+        // --------------------------------------------------
+        priority_queue<
+            array<int, 2>,
+            vector<array<int, 2>>,
+            greater<>
+        > minHeap;
 
-                // Push into available heap (sorted by processingTime)
-                available.push({processTime, index});
+        // Pointer to iterate through sorted tasks
+        int i = 0;
+
+        // Current CPU time starts at first task's enqueue time
+        long long time = tasks[0][0];
+
+        // --------------------------------------------------
+        // Main simulation loop
+        // Continue while tasks are remaining or heap is not empty
+        // --------------------------------------------------
+        while (!minHeap.empty() || i < n) {
+
+            // --------------------------------------------------
+            // Add all tasks that have arrived by current time
+            // --------------------------------------------------
+            while (i < n && time >= tasks[i][0]) {
+                // Push {processingTime, index} into heap
+                minHeap.push({tasks[i][1], tasks[i][2]});
+                i++;
             }
 
+            // --------------------------------------------------
             // If no task is available, CPU is idle
-            if (available.empty()) {
-                // Jump time to next task's enqueueTime
-                time = pending.top()[0];
-                continue;
+            // Jump time to next task's enqueue time
+            // --------------------------------------------------
+            if (minHeap.empty()) {
+                time = tasks[i][0];
             }
+            else {
+                // --------------------------------------------------
+                // Pick the task with smallest processing time
+                // --------------------------------------------------
+                auto [procTime, index] = minHeap.top();
+                minHeap.pop();
 
-            // Pick the best available task
-            auto [processTime, index] = available.top();
-            available.pop();
+                // Execute the task
+                time += procTime;
 
-            // Execute task
-            time += processTime;
-
-            // Record execution order
-            result.push_back(index);
+                // Record execution order
+                res.push_back(index);
+            }
         }
 
-        return result;
+        return res;
     }
 };
