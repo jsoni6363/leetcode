@@ -32,6 +32,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0071-simplify-path](https://github.com/jsoni6363/leetcode/tree/master/0071-simplify-path) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0394-decode-string](https://github.com/jsoni6363/leetcode/tree/master/0394-decode-string) |
+| [1405-longest-happy-string](https://github.com/jsoni6363/leetcode/tree/master/1405-longest-happy-string) |
 ## Stack
 |  |
 | ------- |
@@ -72,6 +73,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0703-kth-largest-element-in-a-stream](https://github.com/jsoni6363/leetcode/tree/master/0703-kth-largest-element-in-a-stream) |
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [1046-last-stone-weight](https://github.com/jsoni6363/leetcode/tree/master/1046-last-stone-weight) |
+| [1405-longest-happy-string](https://github.com/jsoni6363/leetcode/tree/master/1405-longest-happy-string) |
 | [1834-single-threaded-cpu](https://github.com/jsoni6363/leetcode/tree/master/1834-single-threaded-cpu) |
 ## Merge Sort
 |  |
@@ -250,4 +252,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0215-kth-largest-element-in-an-array](https://github.com/jsoni6363/leetcode/tree/master/0215-kth-largest-element-in-an-array) |
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
+## Greedy
+|  |
+| ------- |
+| [1405-longest-happy-string](https://github.com/jsoni6363/leetcode/tree/master/1405-longest-happy-string) |
 <!---LeetCode Topics End-->
