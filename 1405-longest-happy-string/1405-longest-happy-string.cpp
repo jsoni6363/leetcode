@@ -2,69 +2,79 @@ class Solution {
 public:
     string longestDiverseString(int a, int b, int c) {
 
-        // count[0] -> 'a', count[1] -> 'b', count[2] -> 'c'
-        vector<int> count = {a, b, c};
-
-        // Result string
+        // 'res' will store the final result string that we build step by step
         string res;
 
-        // This stores the index of character we are NOT allowed to use
-        // because last two characters are same
-        int repeated = -1;
+        // Max heap (priority queue)
+        // Each element is a pair: (remaining_count, character)
+        // The heap always gives us the character with the HIGHEST remaining count
+        priority_queue<pair<int, char>> maxHeap;
 
-        while (true) {
+        // Push only those characters that actually exist (count > 0)
+        // This avoids invalid characters being used later
+        if (a > 0) maxHeap.push({a, 'a'});  // push 'a' with its count
+        if (b > 0) maxHeap.push({b, 'b'});  // push 'b' with its count
+        if (c > 0) maxHeap.push({c, 'c'});  // push 'c' with its count
 
-            // Pick the character with the maximum count
-            // excluding the repeated one
-            int maxChar = getMax(count, repeated);
+        // Keep building the string while there is at least one character available
+        while (!maxHeap.empty()) {
 
-            // If no valid character exists, stop
-            if (maxChar == -1) {
-                break;
+            // Take the character with the maximum remaining count
+            auto [count, ch] = maxHeap.top();
+            maxHeap.pop();
+
+            // Check if adding this character would create
+            // three same characters in a row (which is NOT allowed)
+            //
+            // We check:
+            // - string length > 1 (need at least 2 characters to compare)
+            // - last character == current character
+            // - second last character == current character
+            if (res.size() > 1 &&
+                res.back() == ch &&
+                res[res.size() - 2] == ch) {
+
+                // If we cannot use this character and there is no alternative,
+                // then we must stop building the string
+                if (maxHeap.empty())
+                    break;
+
+                // Take the second most frequent character from the heap
+                auto [count2, ch2] = maxHeap.top();
+                maxHeap.pop();
+
+                // Add this second character to the result string
+                res += ch2;
+
+                // Decrease its count because we just used it once
+                count2--;
+
+                // If this character still has remaining count,
+                // push it back into the heap
+                if (count2 > 0)
+                    maxHeap.push({count2, ch2});
+
+                // Push the original blocked character back into the heap
+                // (we did NOT use it, so its count stays the same)
+                maxHeap.push({count, ch});
             }
+            else {
+                // It is safe to use this character (no 3 in a row issue)
 
-            // Add chosen character to result
-            res += char(maxChar + 'a');
+                // Add the character to the result string
+                res += ch;
 
-            // Reduce its available count
-            count[maxChar]--;
+                // Decrease its count
+                count--;
 
-            // If last two characters are same,
-            // block this character in next step
-            if (res.size() > 1 && res.back() == res[res.size() - 2]) {
-                repeated = maxChar;
-            } else {
-                // Otherwise, no restriction
-                repeated = -1;
+                // If it still has remaining occurrences,
+                // push it back into the heap
+                if (count > 0)
+                    maxHeap.push({count, ch});
             }
         }
 
+        // Return the longest valid string we were able to build
         return res;
-    }
-
-private:
-    int getMax(const vector<int>& count, int repeated) {
-
-        int idx = -1;       // index of selected character
-        int maxCnt = 0;     // maximum count found
-
-        // Check for 'a', 'b', 'c'
-        for (int i = 0; i < 3; i++) {
-
-            // Skip blocked character or exhausted ones
-            if (i == repeated || count[i] == 0) {
-                continue;
-            }
-
-            // Pick character with maximum remaining count
-            if (count[i] > maxCnt) {
-                maxCnt = count[i];
-                idx = i;
-            }
-        }
-
-        // Return selected character index
-        // or -1 if no valid character exists
-        return idx;
     }
 };
