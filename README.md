@@ -26,6 +26,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0001-two-sum](https://github.com/jsoni6363/leetcode/tree/master/0001-two-sum) |
 | [0146-lru-cache](https://github.com/jsoni6363/leetcode/tree/master/0146-lru-cache) |
 | [0355-design-twitter](https://github.com/jsoni6363/leetcode/tree/master/0355-design-twitter) |
+| [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
 ## String
 |  |
 | ------- |
@@ -33,6 +34,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0071-simplify-path](https://github.com/jsoni6363/leetcode/tree/master/0071-simplify-path) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0394-decode-string](https://github.com/jsoni6363/leetcode/tree/master/0394-decode-string) |
+| [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
 | [1405-longest-happy-string](https://github.com/jsoni6363/leetcode/tree/master/1405-longest-happy-string) |
 ## Stack
 |  |
@@ -72,6 +74,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0215-kth-largest-element-in-an-array](https://github.com/jsoni6363/leetcode/tree/master/0215-kth-largest-element-in-an-array) |
 | [0355-design-twitter](https://github.com/jsoni6363/leetcode/tree/master/0355-design-twitter) |
 | [0703-kth-largest-element-in-a-stream](https://github.com/jsoni6363/leetcode/tree/master/0703-kth-largest-element-in-a-stream) |
+| [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [1046-last-stone-weight](https://github.com/jsoni6363/leetcode/tree/master/1046-last-stone-weight) |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
@@ -130,6 +133,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0215-kth-largest-element-in-an-array](https://github.com/jsoni6363/leetcode/tree/master/0215-kth-largest-element-in-an-array) |
+| [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
@@ -259,9 +263,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Greedy
 |  |
 | ------- |
+| [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
 | [1405-longest-happy-string](https://github.com/jsoni6363/leetcode/tree/master/1405-longest-happy-string) |
 ## Prefix Sum
 |  |
 | ------- |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
+## Counting
+|  |
+| ------- |
+| [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
 <!---LeetCode Topics End-->
