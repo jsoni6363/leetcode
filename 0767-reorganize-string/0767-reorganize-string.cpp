@@ -3,68 +3,61 @@ public:
     string reorganizeString(string s) {
 
         // Step 1: Count frequency of each character
+        // freq[0] -> 'a', freq[1] -> 'b', ..., freq[25] -> 'z'
         vector<int> freq(26, 0);
         for (char c : s) {
             freq[c - 'a']++;
         }
 
-        // Step 2: Check if reorganization is possible
-        int maxFreq = 0;
+        // Step 2: Create a max heap (priority queue)
+        // Each element is: (count, character)
+        // The character with the highest count comes out first
+        priority_queue<pair<int, char>> maxHeap;
+
+        // Push all characters with count > 0 into the heap
         for (int i = 0; i < 26; i++) {
-            maxFreq = max(maxFreq, freq[i]);
+            if (freq[i] > 0) {
+                maxHeap.push({freq[i], char('a' + i)});
+            }
         }
 
-        // If any character appears too many times, it's impossible
-        if (maxFreq > (s.size() + 1) / 2) {
-            return "";
-        }
-
-        // Step 3: Build the result string
+        // Result string
         string result = "";
 
-        while (result.size() < s.size()) {
+        // 'prev' stores the previously used character
+        // We keep it out of the heap for one step
+        pair<int, char> prev = {0, '#'};  // {remainingCount, character}
 
-            // Find character with maximum remaining frequency
-            int firstIdx = findMaxIndex(freq);
-            char firstChar = 'a' + firstIdx;
+        // Step 3: Build the result string
+        while (!maxHeap.empty() || prev.first > 0) {
 
-            // Add it to result
-            result += firstChar;
-            freq[firstIdx]--;
-
-            // If this character is now exhausted, move on
-            if (freq[firstIdx] == 0) {
-                continue;
+            // If heap is empty but we still have a previous character left,
+            // it means we cannot place it without repeating
+            if (maxHeap.empty() && prev.first > 0) {
+                return "";  // impossible to reorganize
             }
 
-            // Temporarily block this character
-            int savedFreq = freq[firstIdx];
-            freq[firstIdx] = -1;
+            // Take the character with the highest remaining count
+            auto top = maxHeap.top();
+            maxHeap.pop();
 
-            // Find next most frequent character
-            int secondIdx = findMaxIndex(freq);
-            char secondChar = 'a' + secondIdx;
+            int count = top.first;
+            char ch = top.second;
 
-            // Add second character
-            result += secondChar;
-            freq[secondIdx]--;
+            // Add this character to the result
+            result += ch;
+            count--;
 
-            // Restore the first character frequency
-            freq[firstIdx] = savedFreq;
+            // If previous character still has remaining count,
+            // push it back into the heap
+            if (prev.first > 0) {
+                maxHeap.push(prev);
+            }
+
+            // Set current character as previous
+            prev = {count, ch};
         }
 
         return result;
-    }
-
-private:
-    // Finds index of character with maximum frequency
-    int findMaxIndex(const vector<int>& freq) {
-        int maxIdx = 0;
-        for (int i = 1; i < 26; i++) {
-            if (freq[i] > freq[maxIdx]) {
-                maxIdx = i;
-            }
-        }
-        return maxIdx;
     }
 };
