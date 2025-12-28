@@ -9,55 +9,65 @@ public:
             freq[c - 'a']++;
         }
 
-        // Step 2: Create a max heap (priority queue)
-        // Each element is: (count, character)
-        // The character with the highest count comes out first
-        priority_queue<pair<int, char>> maxHeap;
+        // Step 2: Find the character with maximum frequency
+        int maxIdx = max_element(freq.begin(), freq.end()) - freq.begin();
+        int maxFreq = freq[maxIdx];
 
-        // Push all characters with count > 0 into the heap
+        // Step 3: Check if rearrangement is possible
+        // If the most frequent character appears too many times,
+        // it is impossible to separate all of them
+        if (maxFreq > (s.size() + 1) / 2) {
+            return "";
+        }
+
+        // Step 4: Prepare result string with same length as input
+        // Initially filled with spaces
+        string res(s.size(), ' ');
+
+        // This index is used to place characters
+        // We start with even positions: 0, 2, 4, ...
+        int idx = 0;
+
+        // Character with maximum frequency
+        char maxChar = 'a' + maxIdx;
+
+        // Step 5: Place the most frequent character at even indices
+        while (freq[maxIdx] > 0) {
+
+            // Place the character
+            res[idx] = maxChar;
+
+            // Move to the next even index
+            idx += 2;
+
+            // Decrease its frequency
+            freq[maxIdx]--;
+        }
+
+        // Step 6: Place all remaining characters
         for (int i = 0; i < 26; i++) {
-            if (freq[i] > 0) {
-                maxHeap.push({freq[i], char('a' + i)});
+
+            // Place character 'a' + i while it still has remaining count
+            while (freq[i] > 0) {
+
+                // If we go out of bounds (past last index),
+                // switch to odd indices: 1, 3, 5, ...
+                if (idx >= s.size()) {
+                    idx = 1;
+                }
+
+                // Place the character
+                res[idx] = 'a' + i;
+
+                // Move to next alternate position
+                idx += 2;
+
+                // Decrease frequency
+                freq[i]--;
             }
         }
 
-        // Result string
-        string result = "";
-
-        // 'prev' stores the previously used character
-        // We keep it out of the heap for one step
-        pair<int, char> prev = {0, '#'};  // {remainingCount, character}
-
-        // Step 3: Build the result string
-        while (!maxHeap.empty() || prev.first > 0) {
-
-            // If heap is empty but we still have a previous character left,
-            // it means we cannot place it without repeating
-            if (maxHeap.empty() && prev.first > 0) {
-                return "";  // impossible to reorganize
-            }
-
-            // Take the character with the highest remaining count
-            auto top = maxHeap.top();
-            maxHeap.pop();
-
-            int count = top.first;
-            char ch = top.second;
-
-            // Add this character to the result
-            result += ch;
-            count--;
-
-            // If previous character still has remaining count,
-            // push it back into the heap
-            if (prev.first > 0) {
-                maxHeap.push(prev);
-            }
-
-            // Set current character as previous
-            prev = {count, ch};
-        }
-
-        return result;
+        // Step 7: Return the rearranged string
+        return res;
     }
 };
