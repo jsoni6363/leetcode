@@ -4,43 +4,70 @@ public:
                              vector<int>& profits,
                              vector<int>& capital) {
 
-        // Max heap to store profits of projects
-        // This helps us pick the MOST profitable project
-        priority_queue<int> maxProfit;
+        /*
+        minCapital heap:
+        ----------------
+        - Stores project indices
+        - Projects are ordered by their required capital (smallest first)
+        - Helps us find which projects become affordable as capital increases
+        */
+        auto cmpCapital = [&](int a, int b) {
+            return capital[a] > capital[b];   // min-heap by capital
+        };
 
-        // Min heap to store projects by required capital
-        // Each element = (capitalRequired, profit)
-        priority_queue<
-            pair<int, int>,
-            vector<pair<int, int>>,
-            greater<>
-        > minCapital;
+        /*
+        maxProfit heap:
+        ----------------
+        - Stores project indices
+        - Projects are ordered by their profit (largest first)
+        - Helps us choose the most profitable affordable project
+        */
+        auto cmpProfit = [&](int a, int b) {
+            return profits[a] < profits[b];   // max-heap by profit
+        };
 
-        // Step 1: Put all projects into minCapital heap
+        // Min heap: projects sorted by required capital
+        priority_queue<int, vector<int>, decltype(cmpCapital)> minCapital(cmpCapital);
+
+        // Max heap: affordable projects sorted by profit
+        priority_queue<int, vector<int>, decltype(cmpProfit)> maxProfit(cmpProfit);
+
+        // Step 1: Put all project indices into minCapital heap
         for (int i = 0; i < capital.size(); i++) {
-            minCapital.push({capital[i], profits[i]});
+            minCapital.push(i);
         }
 
         // Step 2: We can choose at most k projects
         for (int i = 0; i < k; i++) {
 
-            // Move all projects we can afford into maxProfit heap
+            /*
+            Move all projects that we can currently afford
+            (capital requirement <= current capital w)
+            from minCapital heap to maxProfit heap
+            */
             while (!minCapital.empty() &&
-                   minCapital.top().first <= w) {
+                   capital[minCapital.top()] <= w) {
 
-                // Push profit into maxProfit heap
-                maxProfit.push(minCapital.top().second);
+                maxProfit.push(minCapital.top());
                 minCapital.pop();
             }
 
-            // If no project is affordable, stop early
+            /*
+            If no affordable project exists,
+            we cannot do any more projects
+            */
             if (maxProfit.empty()) {
                 break;
             }
 
-            // Choose the most profitable affordable project
-            w += maxProfit.top();
+            /*
+            Choose the project with the maximum profit
+            and increase our capital
+            */
+            int bestProject = maxProfit.top();
             maxProfit.pop();
+
+            w += profits[bestProject];
         }
 
         // Final maximized capital
