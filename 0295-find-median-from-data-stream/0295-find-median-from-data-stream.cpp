@@ -1,57 +1,50 @@
 class MedianFinder {
-
-    // Max heap to store the smaller half of numbers
-    // Top element = largest among the smaller half
-    priority_queue<int> smallHeap;
-
-    // Min heap to store the larger half of numbers
-    // Top element = smallest among the larger half
-    priority_queue<int, vector<int>, greater<int>> largeHeap;
-
+    priority_queue<int> smallheap;
+    priority_queue<int,vector<int>,greater<int>> largeheap;
 public:
-    MedianFinder() {}
-
-    // Adds a number into the data structure
-    void addNum(int num) {
-
-        // Step 1: Always insert into smallHeap first
-        smallHeap.push(num);
-
-        // Step 2: Fix ordering
-        // If largest in smallHeap is greater than smallest in largeHeap,
-        // move it to largeHeap
-        if (!largeHeap.empty() && smallHeap.top() > largeHeap.top()) {
-            largeHeap.push(smallHeap.top());
-            smallHeap.pop();
-        }
-
-        // Step 3: Balance sizes (smallHeap too big)
-        if (smallHeap.size() > largeHeap.size() + 1) {
-            largeHeap.push(smallHeap.top());
-            smallHeap.pop();
-        }
-
-        // Step 4: Balance sizes (largeHeap too big)
-        if (largeHeap.size() > smallHeap.size() + 1) {
-            smallHeap.push(largeHeap.top());
-            largeHeap.pop();
-        }
+    MedianFinder() {
+        
     }
+    
+    void addNum(int num) {
+        smallheap.push(num);
 
-    // Returns the median of current data stream
+        if(!largeheap.empty() && smallheap.top()>largeheap.top()){
+            largeheap.push(smallheap.top());
+            smallheap.pop();
+        }
+
+        if(smallheap.size()>largeheap.size()+1){
+            largeheap.push(smallheap.top());
+            smallheap.pop();
+        }
+
+        if(smallheap.size()+1<largeheap.size()){
+            smallheap.push(largeheap.top());
+            largeheap.pop();
+        }        
+    }
+    
     double findMedian() {
-
         // If both heaps have same size → even count
-        if (smallHeap.size() == largeHeap.size()) {
-            return (smallHeap.top() + largeHeap.top()) / 2.0;
+        if (smallheap.size() == largeheap.size()) {
+            return (smallheap.top() + largeheap.top()) / 2.0;
         }
 
         // If smallHeap has more elements
-        if (smallHeap.size() > largeHeap.size()) {
-            return smallHeap.top();
+        if (smallheap.size() > largeheap.size()) {
+            return smallheap.top();
         }
 
         // If largeHeap has more elements
-        return largeHeap.top();
+        return largeheap.top();
     }
+    
 };
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder* obj = new MedianFinder();
+ * obj->addNum(num);
+ * double param_2 = obj->findMedian();
+ */
