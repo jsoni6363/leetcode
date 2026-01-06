@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/jsoni6363/leetcode/tree/master/0001-two-sum) |
+| [0046-permutations](https://github.com/jsoni6363/leetcode/tree/master/0046-permutations) |
 | [0078-subsets](https://github.com/jsoni6363/leetcode/tree/master/0078-subsets) |
 | [0090-subsets-ii](https://github.com/jsoni6363/leetcode/tree/master/0090-subsets-ii) |
 | [0150-evaluate-reverse-polish-notation](https://github.com/jsoni6363/leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
@@ -292,6 +293,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Backtracking
 |  |
 | ------- |
+| [0046-permutations](https://github.com/jsoni6363/leetcode/tree/master/0046-permutations) |
 | [0078-subsets](https://github.com/jsoni6363/leetcode/tree/master/0078-subsets) |
 | [0090-subsets-ii](https://github.com/jsoni6363/leetcode/tree/master/0090-subsets-ii) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
