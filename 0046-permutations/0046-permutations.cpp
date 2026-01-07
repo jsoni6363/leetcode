@@ -2,62 +2,41 @@ class Solution {
 public:
 
     /*
-        recurpermute(...)
-        -----------------
-        nums : original numbers
-        freq : keeps track of used elements
-        ans  : stores all permutations
-        ds   : current permutation being built
+        recurpermute(index, ans, nums)
+        --------------------------------
+        index = current position to fix
+        nums  = current arrangement
+        ans   = stores all permutations
     */
-    void recurpermute(vector<int>& nums, int freq[],
-                      vector<vector<int>>& ans,
-                      vector<int> &ds) {
 
-        // BASE CASE:
-        // If current permutation size equals nums size,
-        // we formed one full permutation
-        if (ds.size() == nums.size()) {
-            ans.push_back(ds);
+    void recurpermute(int index, vector<vector<int>> &ans, vector<int> &nums){
+
+        // ✅ BASE CASE:
+        // If we fixed all positions, store the permutation
+        if(index == nums.size()){
+            ans.push_back(nums);
             return;
         }
 
-        // Try placing each number at current position
-        for (int i = 0; i < nums.size(); i++) {
+        // 🔁 Try every element for current index
+        for(int i = index; i < nums.size(); i++){
 
-            // If this number is not used yet
-            if (!freq[i]) {
+            // 👉 STEP 1: Place nums[i] at position 'index'
+            swap(nums[i], nums[index]);
 
-                // Mark it as used
-                freq[i] = 1;
+            // 👉 STEP 2: Recurse to fix next position
+            recurpermute(index + 1, ans, nums);
 
-                // Pick the number
-                ds.push_back(nums[i]);
-
-                // Recurse to fill next position
-                recurpermute(nums, freq, ans, ds);
-
-                // BACKTRACK:
-                // Remove the number
-                ds.pop_back();
-
-                // Mark it as unused
-                freq[i] = 0;
-            }
+            // 👉 STEP 3: Undo the swap (BACKTRACK)
+            swap(nums[i], nums[index]);
         }
     }
 
     vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
 
-        vector<vector<int>> ans;   // stores all permutations
-        vector<int> ds;            // current permutation
-
-        // Frequency array (0 = not used, 1 = used)
-        int freq[nums.size()];
-        for (int i = 0; i < nums.size(); i++)
-            freq[i] = 0;
-
-        // Start recursion
-        recurpermute(nums, freq, ans, ds);
+        // Start fixing from index 0
+        recurpermute(0, ans, nums);
 
         return ans;
     }
