@@ -1,87 +1,56 @@
 class Solution {
 public:
 
-    /*
-        recurpermute(...)
-        ----------------
-        nums  -> original input numbers
-        ds    -> current permutation being built
-        ans   -> final list of unique permutations
-        freq  -> marks which indices are already used (0 = not used, 1 = used)
-        st    -> set to store only UNIQUE permutations
-    */
-
-    void recurpermute(vector<int>& nums, vector<int>& ds,
+    void recurpermute(vector<int>& nums, int freq[],
                       vector<vector<int>>& ans,
-                      vector<int>& freq,
-                      set<vector<int>>& st) {
+                      vector<int>& ds) {
 
-        // ✅ BASE CASE:
-        // If current permutation length == total numbers,
-        // then one full permutation is formed
+        // Base case: one full permutation formed
         if (ds.size() == nums.size()) {
-
-            // If this permutation is NOT already in the set
-            // (meaning it is unique)
-            if (st.find(ds) == st.end()) {
-
-                // Store it in the set to avoid duplicates later
-                st.insert(ds);
-
-                // Also store it in answer list
-                ans.push_back(ds);
-            }
-
-            // Return to explore other possibilities
+            ans.push_back(ds);
             return;
         }
 
-        // 🔁 TRY ALL NUMBERS FOR CURRENT POSITION
+        // Try all numbers
         for (int i = 0; i < nums.size(); i++) {
 
-            // ❌ If this number is already used in current permutation,
-            // skip it
-            if (freq[i] == 1)
+            // ❌ If already used, skip
+            if (freq[i] == 1) continue;
+
+            // ❌ Skip duplicates:
+            // If current number is same as previous
+            // and previous was NOT used, skip it
+            //if the prev is already used means placed at correct we can use but othwerwis emight miss [1,1,2] cause that wont allow to use only duplicate
+            if (i > 0 && nums[i] == nums[i-1] && freq[i-1] == 0)
                 continue;
 
-            // ✅ CHOOSE:
-            // Mark this index as used
+            // Choose
             freq[i] = 1;
-
-            // Add this number to current permutation
             ds.push_back(nums[i]);
 
-            // 🔍 EXPLORE:
-            // Recurse to fill the next position
-            recurpermute(nums, ds, ans, freq, st);
+            // Explore
+            recurpermute(nums, freq, ans, ds);
 
-            // 🔙 UNCHOOSE (BACKTRACK):
-            // Remove the last added number
+            // Unchoose (backtrack)
             ds.pop_back();
-
-            // Mark this index as unused again
             freq[i] = 0;
         }
     }
 
     vector<vector<int>> permuteUnique(vector<int>& nums) {
 
-        // This will store final unique permutations
-        vector<vector<int>> ans;
+        // ✅ VERY IMPORTANT: sort first
+        sort(nums.begin(), nums.end());
 
-        // This stores the current permutation
+        vector<vector<int>> ans;
         vector<int> ds;
 
-        // Frequency array to track used elements
-        vector<int> freq(nums.size(), 0);
+        int freq[nums.size()];
+        for (int i = 0; i < nums.size(); i++)
+            freq[i] = 0;
 
-        // ✅ Set to automatically remove duplicate permutations
-        set<vector<int>> st;
+        recurpermute(nums, freq, ans, ds);
 
-        // Start recursion with empty permutation
-        recurpermute(nums, ds, ans, freq, st);
-
-        // Return all unique permutations
         return ans;
     }
 };
