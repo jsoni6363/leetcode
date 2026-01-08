@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/jsoni6363/leetcode/tree/master/0001-two-sum) |
+| [0040-combination-sum-ii](https://github.com/jsoni6363/leetcode/tree/master/0040-combination-sum-ii) |
 | [0046-permutations](https://github.com/jsoni6363/leetcode/tree/master/0046-permutations) |
 | [0047-permutations-ii](https://github.com/jsoni6363/leetcode/tree/master/0047-permutations-ii) |
 | [0078-subsets](https://github.com/jsoni6363/leetcode/tree/master/0078-subsets) |
@@ -295,6 +296,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Backtracking
 |  |
 | ------- |
+| [0040-combination-sum-ii](https://github.com/jsoni6363/leetcode/tree/master/0040-combination-sum-ii) |
 | [0046-permutations](https://github.com/jsoni6363/leetcode/tree/master/0046-permutations) |
 | [0047-permutations-ii](https://github.com/jsoni6363/leetcode/tree/master/0047-permutations-ii) |
 | [0078-subsets](https://github.com/jsoni6363/leetcode/tree/master/0078-subsets) |
