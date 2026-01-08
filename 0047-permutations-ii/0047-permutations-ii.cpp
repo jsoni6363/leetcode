@@ -1,56 +1,45 @@
 class Solution {
 public:
 
-    void recurpermute(vector<int>& nums, int freq[],
-                      vector<vector<int>>& ans,
-                      vector<int>& ds) {
+    void recurpermute(int index, vector<vector<int>> &ans, vector<int> &nums){
 
-        // Base case: one full permutation formed
-        if (ds.size() == nums.size()) {
-            ans.push_back(ds);
+        // Base case: all positions fixed
+        if(index == nums.size()){
+            ans.push_back(nums);
             return;
         }
 
-        // Try all numbers
-        for (int i = 0; i < nums.size(); i++) {
+        // Set to track values already placed at this index
+        unordered_set<int> used;
 
-            // ❌ If already used, skip
-            if (freq[i] == 1) continue;
+        // Try every candidate for this index
+        for(int i = index; i < nums.size(); i++){
 
-            // ❌ Skip duplicates:
-            // If current number is same as previous
-            // and previous was NOT used, skip it
-            //if the prev is already used means placed at correct we can use but othwerwis emight miss [1,1,2] cause that wont allow to use only duplicate
-            if (i > 0 && nums[i] == nums[i-1] && freq[i-1] == 0)
+            // ❌ If this value is already used at this level, skip
+            if(used.find(nums[i]) != used.end())
                 continue;
 
-            // Choose
-            freq[i] = 1;
-            ds.push_back(nums[i]);
+            // Mark this value as used for this position
+            used.insert(nums[i]);
 
-            // Explore
-            recurpermute(nums, freq, ans, ds);
+            // Choose: place nums[i] at position index
+            swap(nums[i], nums[index]);
 
-            // Unchoose (backtrack)
-            ds.pop_back();
-            freq[i] = 0;
+            // Explore next position
+            recurpermute(index + 1, ans, nums);
+
+            // Unchoose: backtrack
+            swap(nums[i], nums[index]);
         }
     }
 
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-
-        // ✅ VERY IMPORTANT: sort first
-        sort(nums.begin(), nums.end());
-
         vector<vector<int>> ans;
-        vector<int> ds;
 
-        int freq[nums.size()];
-        for (int i = 0; i < nums.size(); i++)
-            freq[i] = 0;
+        // Sorting is optional here but helps consistency
+        // sort(nums.begin(), nums.end());
 
-        recurpermute(nums, freq, ans, ds);
-
+        recurpermute(0, ans, nums);
         return ans;
     }
 };
