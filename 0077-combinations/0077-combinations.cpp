@@ -1,22 +1,24 @@
 class Solution {
+    vector<vector<int>> res;
 public:
-    void backtrack(int start,vector<int>& ds,int n,int k,vector<vector<int>>& ans){
-       if(ds.size()==k){
-        ans.push_back(ds);
-        return ;
-       }
-
-       for(int num=start;num<=n;num++){
-        ds.push_back(num);
-        backtrack(num+1,ds,n,k,ans);
-        ds.pop_back();
-       }
-    }
     vector<vector<int>> combine(int n, int k) {
-        vector<vector<int>> ans;
-        vector<int> ds;
-        backtrack(1,ds,n,k,ans);
-        return ans;
+        vector<int> comb;
+        backtrack(1, n, k, comb);
+        return res;
     }
 
+private:
+    void backtrack(int i, int n, int k, vector<int>& comb) {
+        if (i > n) {
+            if (comb.size() == k) {
+                res.push_back(comb);
+            }
+            return;
+        }
+
+        comb.push_back(i);
+        backtrack(i + 1, n, k, comb);
+        comb.pop_back();
+        backtrack(i + 1, n, k, comb);
+    }
 };
