@@ -23,23 +23,26 @@ public:
             "wxyz"  // 9
         };
 
-        // Loop over each digit in input
-        for (char d : digits) {
+        // Loop over each digit
+        for (int i = 0; i < digits.length(); i++) {
 
-            vector<string> temp;  // to store new combinations
+            int digit = digits[i] - '0';  // convert char to number
+            vector<string> temp;
 
-            // For every string formed so far
-            for (string cur : res) {
+            // Loop over all existing strings
+            for (int j = 0; j < res.size(); j++) {
 
-                // Take all characters mapped to this digit
-                for (char ch : mp[d - '0']) {
+                string current = res[j];
 
-                    // Add character to current string
-                    temp.push_back(cur + ch);
+                // Loop over all characters for this digit
+                for (int k = 0; k < mp[digit].length(); k++) {
+
+                    char ch = mp[digit][k];
+                    temp.push_back(current + ch);
                 }
             }
 
-            // Update result with newly formed combinations
+            // Update result
             res = temp;
         }
 
