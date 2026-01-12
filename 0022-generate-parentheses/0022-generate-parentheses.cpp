@@ -1,45 +1,33 @@
 class Solution {
 public:
+    vector<string> result;
 
-    // Checks whether a parentheses string is valid
-    bool valid(const string& s) {
-        int open = 0;
+    // backtrack function
+    // current = string built so far
+    // open = number of '(' used
+    // close = number of ')' used
+    // n = total pairs
+    void backtrack(string current, int open, int close, int n) {
 
-        for (char c : s) {
-            if (c == '(')
-                open++;      // opening bracket
-            else
-                open--;      // closing bracket
-
-            // If at any time close > open → invalid
-            if (open < 0) return false;
-        }
-
-        // At the end, all opens must be closed
-        return open == 0;
-    }
-
-    // DFS to generate all possible strings
-    void dfs(string s, vector<string>& res, int n) {
-
-        // If length becomes 2*n, check validity
-        if (s.length() == 2 * n) {
-            if (valid(s)) {
-                res.push_back(s);
-            }
+        // ✅ If length is 2*n, we formed a valid combination
+        if (current.length() == 2 * n) {
+            result.push_back(current);
             return;
         }
 
-        // Always try adding '('
-        dfs(s + '(', res, n);
+        // ✅ We can add '(' if we still have some left
+        if (open < n) {
+            backtrack(current + "(", open + 1, close, n);
+        }
 
-        // Always try adding ')'
-        dfs(s + ')', res, n);
+        // ✅ We can add ')' only if it won't make string invalid
+        if (close < open) {
+            backtrack(current + ")", open, close + 1, n);
+        }
     }
 
     vector<string> generateParenthesis(int n) {
-        vector<string> res;
-        dfs("", res, n);
-        return res;
+        backtrack("", 0, 0, n);
+        return result;
     }
 };
