@@ -40,6 +40,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0020-valid-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0020-valid-parentheses) |
+| [0022-generate-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0022-generate-parentheses) |
 | [0071-simplify-path](https://github.com/jsoni6363/leetcode/tree/master/0071-simplify-path) |
 | [0079-word-search](https://github.com/jsoni6363/leetcode/tree/master/0079-word-search) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
@@ -264,6 +265,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Dynamic Programming
 |  |
 | ------- |
+| [0022-generate-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0022-generate-parentheses) |
 | [0124-binary-tree-maximum-path-sum](https://github.com/jsoni6363/leetcode/tree/master/0124-binary-tree-maximum-path-sum) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
 ## Matrix
@@ -301,6 +303,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Backtracking
 |  |
 | ------- |
+| [0022-generate-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0022-generate-parentheses) |
 | [0039-combination-sum](https://github.com/jsoni6363/leetcode/tree/master/0039-combination-sum) |
 | [0040-combination-sum-ii](https://github.com/jsoni6363/leetcode/tree/master/0040-combination-sum-ii) |
 | [0046-permutations](https://github.com/jsoni6363/leetcode/tree/master/0046-permutations) |
