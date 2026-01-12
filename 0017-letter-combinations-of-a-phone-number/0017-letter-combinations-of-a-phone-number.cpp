@@ -1,51 +1,59 @@
 class Solution {
 public:
+
+    // This will store all final combinations
+    vector<string> result;
+
+    // Phone keypad mapping
+    vector<string> mapping = {
+        "",     // 0
+        "",     // 1
+        "abc",  // 2
+        "def",  // 3
+        "ghi",  // 4
+        "jkl",  // 5
+        "mno",  // 6
+        "pqrs", // 7
+        "tuv",  // 8
+        "wxyz"  // 9
+    };
+
     vector<string> letterCombinations(string digits) {
 
-        // If input is empty, no combinations possible
-        if (digits.size() == 0) return {};
-
-        // This will store our final answer
-        vector<string> res;
-        res.push_back("");   // start with empty string
-
-        // Mapping of digit to characters
-        vector<string> mp = {
-            "",     // 0 (not used)
-            "",     // 1 (not used)
-            "abc",  // 2
-            "def",  // 3
-            "ghi",  // 4
-            "jkl",  // 5
-            "mno",  // 6
-            "pqrs", // 7
-            "tuv",  // 8
-            "wxyz"  // 9
-        };
-
-        // Loop over each digit
-        for (int i = 0; i < digits.length(); i++) {
-
-            int digit = digits[i] - '0';  // convert char to number
-            vector<string> temp;
-
-            // Loop over all existing strings
-            for (int j = 0; j < res.size(); j++) {
-
-                string current = res[j];
-
-                // Loop over all characters for this digit
-                for (int k = 0; k < mp[digit].length(); k++) {
-
-                    char ch = mp[digit][k];
-                    temp.push_back(current + ch);
-                }
-            }
-
-            // Update result
-            res = temp;
+        // If input is empty, return empty result
+        if (digits.length() == 0) {
+            return result;
         }
 
-        return res;
+        // Start recursion from index 0 with empty string
+        backtrack(0, "", digits);
+
+        return result;
+    }
+
+    // i = which digit we are currently processing
+    // current = string formed so far
+    void backtrack(int i, string current, string &digits) {
+
+        // If we have chosen one character for every digit
+        if (current.length() == digits.length()) {
+            result.push_back(current);   // store the combination
+            return;                      // stop this path
+        }
+
+        // Convert digit character to number
+        int digit = digits[i] - '0';
+
+        // Get all letters for this digit
+        string letters = mapping[digit];
+
+        // Try every possible letter
+        for (int k = 0; k < letters.length(); k++) {
+
+            char ch = letters[k];        // pick one letter
+
+            // Add this letter and move to next digit
+            backtrack(i + 1, current + ch, digits);
+        }
     }
 };
