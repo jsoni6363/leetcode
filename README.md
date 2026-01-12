@@ -30,6 +30,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [1299-replace-elements-with-greatest-element-on-right-side](https://github.com/jsoni6363/leetcode/tree/master/1299-replace-elements-with-greatest-element-on-right-side) |
 | [1834-single-threaded-cpu](https://github.com/jsoni6363/leetcode/tree/master/1834-single-threaded-cpu) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
+| [1929-concatenation-of-array](https://github.com/jsoni6363/leetcode/tree/master/1929-concatenation-of-array) |
 ## Hash Table
 |  |
 | ------- |
@@ -121,6 +122,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 | [0735-asteroid-collision](https://github.com/jsoni6363/leetcode/tree/master/0735-asteroid-collision) |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
+| [1929-concatenation-of-array](https://github.com/jsoni6363/leetcode/tree/master/1929-concatenation-of-array) |
 ## Queue
 |  |
 | ------- |
