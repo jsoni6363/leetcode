@@ -47,6 +47,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0394-decode-string](https://github.com/jsoni6363/leetcode/tree/master/0394-decode-string) |
 | [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
 | [1405-longest-happy-string](https://github.com/jsoni6363/leetcode/tree/master/1405-longest-happy-string) |
+| [3110-score-of-a-string](https://github.com/jsoni6363/leetcode/tree/master/3110-score-of-a-string) |
 ## Stack
 |  |
 | ------- |
