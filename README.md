@@ -27,6 +27,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [1046-last-stone-weight](https://github.com/jsoni6363/leetcode/tree/master/1046-last-stone-weight) |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
+| [1299-replace-elements-with-greatest-element-on-right-side](https://github.com/jsoni6363/leetcode/tree/master/1299-replace-elements-with-greatest-element-on-right-side) |
 | [1834-single-threaded-cpu](https://github.com/jsoni6363/leetcode/tree/master/1834-single-threaded-cpu) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
 ## Hash Table
