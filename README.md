@@ -28,6 +28,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [1046-last-stone-weight](https://github.com/jsoni6363/leetcode/tree/master/1046-last-stone-weight) |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
 | [1299-replace-elements-with-greatest-element-on-right-side](https://github.com/jsoni6363/leetcode/tree/master/1299-replace-elements-with-greatest-element-on-right-side) |
+| [1470-shuffle-the-array](https://github.com/jsoni6363/leetcode/tree/master/1470-shuffle-the-array) |
 | [1834-single-threaded-cpu](https://github.com/jsoni6363/leetcode/tree/master/1834-single-threaded-cpu) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
 | [1929-concatenation-of-array](https://github.com/jsoni6363/leetcode/tree/master/1929-concatenation-of-array) |
