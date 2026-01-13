@@ -50,6 +50,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0022-generate-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0022-generate-parentheses) |
 | [0071-simplify-path](https://github.com/jsoni6363/leetcode/tree/master/0071-simplify-path) |
 | [0079-word-search](https://github.com/jsoni6363/leetcode/tree/master/0079-word-search) |
+| [0131-palindrome-partitioning](https://github.com/jsoni6363/leetcode/tree/master/0131-palindrome-partitioning) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0394-decode-string](https://github.com/jsoni6363/leetcode/tree/master/0394-decode-string) |
 | [0767-reorganize-string](https://github.com/jsoni6363/leetcode/tree/master/0767-reorganize-string) |
@@ -276,6 +277,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0022-generate-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0022-generate-parentheses) |
 | [0124-binary-tree-maximum-path-sum](https://github.com/jsoni6363/leetcode/tree/master/0124-binary-tree-maximum-path-sum) |
+| [0131-palindrome-partitioning](https://github.com/jsoni6363/leetcode/tree/master/0131-palindrome-partitioning) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
 | [0473-matchsticks-to-square](https://github.com/jsoni6363/leetcode/tree/master/0473-matchsticks-to-square) |
 ## Matrix
@@ -323,6 +325,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0078-subsets](https://github.com/jsoni6363/leetcode/tree/master/0078-subsets) |
 | [0079-word-search](https://github.com/jsoni6363/leetcode/tree/master/0079-word-search) |
 | [0090-subsets-ii](https://github.com/jsoni6363/leetcode/tree/master/0090-subsets-ii) |
+| [0131-palindrome-partitioning](https://github.com/jsoni6363/leetcode/tree/master/0131-palindrome-partitioning) |
 | [0473-matchsticks-to-square](https://github.com/jsoni6363/leetcode/tree/master/0473-matchsticks-to-square) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
 ## Bit Manipulation
