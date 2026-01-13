@@ -17,6 +17,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0150-evaluate-reverse-polish-notation](https://github.com/jsoni6363/leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
 | [0215-kth-largest-element-in-an-array](https://github.com/jsoni6363/leetcode/tree/master/0215-kth-largest-element-in-an-array) |
 | [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
+| [0473-matchsticks-to-square](https://github.com/jsoni6363/leetcode/tree/master/0473-matchsticks-to-square) |
 | [0485-max-consecutive-ones](https://github.com/jsoni6363/leetcode/tree/master/0485-max-consecutive-ones) |
 | [0502-ipo](https://github.com/jsoni6363/leetcode/tree/master/0502-ipo) |
 | [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
@@ -276,6 +277,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0022-generate-parentheses](https://github.com/jsoni6363/leetcode/tree/master/0022-generate-parentheses) |
 | [0124-binary-tree-maximum-path-sum](https://github.com/jsoni6363/leetcode/tree/master/0124-binary-tree-maximum-path-sum) |
 | [0337-house-robber-iii](https://github.com/jsoni6363/leetcode/tree/master/0337-house-robber-iii) |
+| [0473-matchsticks-to-square](https://github.com/jsoni6363/leetcode/tree/master/0473-matchsticks-to-square) |
 ## Matrix
 |  |
 | ------- |
@@ -321,12 +323,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0078-subsets](https://github.com/jsoni6363/leetcode/tree/master/0078-subsets) |
 | [0079-word-search](https://github.com/jsoni6363/leetcode/tree/master/0079-word-search) |
 | [0090-subsets-ii](https://github.com/jsoni6363/leetcode/tree/master/0090-subsets-ii) |
+| [0473-matchsticks-to-square](https://github.com/jsoni6363/leetcode/tree/master/0473-matchsticks-to-square) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
 ## Bit Manipulation
 |  |
 | ------- |
 | [0078-subsets](https://github.com/jsoni6363/leetcode/tree/master/0078-subsets) |
 | [0090-subsets-ii](https://github.com/jsoni6363/leetcode/tree/master/0090-subsets-ii) |
+| [0473-matchsticks-to-square](https://github.com/jsoni6363/leetcode/tree/master/0473-matchsticks-to-square) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
 ## Combinatorics
 |  |
@@ -336,4 +340,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
+## Bitmask
+|  |
+| ------- |
+| [0473-matchsticks-to-square](https://github.com/jsoni6363/leetcode/tree/master/0473-matchsticks-to-square) |
 <!---LeetCode Topics End-->
