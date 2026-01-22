@@ -1,31 +1,61 @@
 class Solution {
 public:
 
-    // DFS function that RETURNS the area of the current island
-    int dfs(int i, int j, vector<vector<bool>>& vis, 
+    // BFS function to calculate area of the island starting from (i, j)
+    int bfs(int i, int j, vector<vector<bool>>& vis, 
             vector<vector<int>>& grid, int n, int m) {
 
-        // Step 1: Boundary check
-        if(i < 0 || j < 0 || i >= n || j >= m)
-            return 0;
+        // Queue for BFS traversal
+        queue<pair<int,int>> q;
 
-        // Step 2: If already visited or water, stop and add 0 area
-        if(vis[i][j] == true || grid[i][j] == 0)
-            return 0;
-
-        // Step 3: Mark current cell as visited
+        // Mark starting land cell as visited
         vis[i][j] = true;
 
-        // Step 4: Current cell contributes 1 area
-        int area = 1;
+        // Push starting cell into queue
+        q.push({i, j});
 
-        // Step 5: Add areas from all 4 directions
-        area += dfs(i-1, j, vis, grid, n, m); // up
-        area += dfs(i+1, j, vis, grid, n, m); // down
-        area += dfs(i, j-1, vis, grid, n, m); // left
-        area += dfs(i, j+1, vis, grid, n, m); // right
+        int area = 1;   // starting cell contributes 1 to area
 
-        return area;  // total area of this island
+        // Continue BFS until queue is empty
+        while(!q.empty()) {
+
+            auto node = q.front();
+            q.pop();
+
+            int row = node.first;
+            int col = node.second;
+
+            // -------- Check UP --------
+            if(row - 1 >= 0 && grid[row - 1][col] == 1 && !vis[row - 1][col]) {
+                vis[row - 1][col] = true;
+                q.push({row - 1, col});
+                area++;   // increase area
+            }
+
+            // -------- Check DOWN --------
+            if(row + 1 < n && grid[row + 1][col] == 1 && !vis[row + 1][col]) {
+                vis[row + 1][col] = true;
+                q.push({row + 1, col});
+                area++;
+            }
+
+            // -------- Check LEFT --------
+            if(col - 1 >= 0 && grid[row][col - 1] == 1 && !vis[row][col - 1]) {
+                vis[row][col - 1] = true;
+                q.push({row, col - 1});
+                area++;
+            }
+
+            // -------- Check RIGHT --------
+            if(col + 1 < m && grid[row][col + 1] == 1 && !vis[row][col + 1]) {
+                vis[row][col + 1] = true;
+                q.push({row, col + 1});
+                area++;
+            }
+        }
+
+        // Return total area of this island
+        return area;
     }
 
     int maxAreaOfIsland(vector<vector<int>>& grid) {
@@ -33,18 +63,18 @@ public:
         int n = grid.size();
         int m = grid[0].size();
 
-        int maxArea = 0;   // stores the largest island area
+        int maxArea = 0;   // stores maximum island area
 
         vector<vector<bool>> vis(n, vector<bool>(m, false));
 
-        // Traverse grid
+        // Traverse each cell of the grid
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
 
-                // If unvisited land found, compute its area
+                // If unvisited land found, calculate its area
                 if(grid[i][j] == 1 && !vis[i][j]) {
 
-                    int area = dfs(i, j, vis, grid, n, m); 
+                    int area = bfs(i, j, vis, grid, n, m);
                     maxArea = max(maxArea, area);
                 }
             }
