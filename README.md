@@ -32,6 +32,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
+| [0994-rotting-oranges](https://github.com/jsoni6363/leetcode/tree/master/0994-rotting-oranges) |
 | [1046-last-stone-weight](https://github.com/jsoni6363/leetcode/tree/master/1046-last-stone-weight) |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
 | [1299-replace-elements-with-greatest-element-on-right-side](https://github.com/jsoni6363/leetcode/tree/master/1299-replace-elements-with-greatest-element-on-right-side) |
@@ -265,6 +266,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0226-invert-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0226-invert-binary-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0695-max-area-of-island](https://github.com/jsoni6363/leetcode/tree/master/0695-max-area-of-island) |
+| [0994-rotting-oranges](https://github.com/jsoni6363/leetcode/tree/master/0994-rotting-oranges) |
 | [1448-count-good-nodes-in-binary-tree](https://github.com/jsoni6363/leetcode/tree/master/1448-count-good-nodes-in-binary-tree) |
 ## Binary Search Tree
 |  |
@@ -300,6 +302,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0200-number-of-islands](https://github.com/jsoni6363/leetcode/tree/master/0200-number-of-islands) |
 | [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
 | [0695-max-area-of-island](https://github.com/jsoni6363/leetcode/tree/master/0695-max-area-of-island) |
+| [0994-rotting-oranges](https://github.com/jsoni6363/leetcode/tree/master/0994-rotting-oranges) |
 ## Geometry
 |  |
 | ------- |
