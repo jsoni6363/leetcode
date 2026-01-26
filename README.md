@@ -11,6 +11,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0040-combination-sum-ii](https://github.com/jsoni6363/leetcode/tree/master/0040-combination-sum-ii) |
 | [0046-permutations](https://github.com/jsoni6363/leetcode/tree/master/0046-permutations) |
 | [0047-permutations-ii](https://github.com/jsoni6363/leetcode/tree/master/0047-permutations-ii) |
+| [0048-rotate-image](https://github.com/jsoni6363/leetcode/tree/master/0048-rotate-image) |
 | [0051-n-queens](https://github.com/jsoni6363/leetcode/tree/master/0051-n-queens) |
 | [0054-spiral-matrix](https://github.com/jsoni6363/leetcode/tree/master/0054-spiral-matrix) |
 | [0073-set-matrix-zeroes](https://github.com/jsoni6363/leetcode/tree/master/0073-set-matrix-zeroes) |
@@ -147,6 +148,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Math
 |  |
 | ------- |
+| [0048-rotate-image](https://github.com/jsoni6363/leetcode/tree/master/0048-rotate-image) |
 | [0150-evaluate-reverse-polish-notation](https://github.com/jsoni6363/leetcode/tree/master/0150-evaluate-reverse-polish-notation) |
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [1863-sum-of-all-subset-xor-totals](https://github.com/jsoni6363/leetcode/tree/master/1863-sum-of-all-subset-xor-totals) |
@@ -298,6 +300,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Matrix
 |  |
 | ------- |
+| [0048-rotate-image](https://github.com/jsoni6363/leetcode/tree/master/0048-rotate-image) |
 | [0054-spiral-matrix](https://github.com/jsoni6363/leetcode/tree/master/0054-spiral-matrix) |
 | [0073-set-matrix-zeroes](https://github.com/jsoni6363/leetcode/tree/master/0073-set-matrix-zeroes) |
 | [0079-word-search](https://github.com/jsoni6363/leetcode/tree/master/0079-word-search) |
