@@ -1,39 +1,51 @@
 class Solution {
 public:
+    // Function to return matrix in spiral order
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        int n = matrix.size();
-        int m = matrix[0].size();
-        int top=0;
-        int bottom=n-1;
-        int left=0;
-        int right=m-1;
+        // Vector to store final spiral order result
+        vector<int> result;
 
-        vector<int> ans;
-        while(left<=right && top<=bottom){
-            for(int i=left;i<=right;i++)
-            ans.push_back(matrix[top][i]);
+        // Get number of rows and columns
+        int top = 0;
+        int bottom = matrix.size() - 1;
+        int left = 0;
+        int right = matrix[0].size() - 1;
 
-            top++;
+        // Traverse the matrix in spiral order
+        while(top <= bottom && left <= right) {
 
-            for(int i=top;i<=bottom;i++)
-            ans.push_back(matrix[i][right]);
+            // Traverse from left to right across the top row
+            for(int i = left; i <= right; i++) {
+                result.push_back(matrix[top][i]);
+            }
+            top++; // Move top boundary down
 
-            right--;
+            // Traverse from top to bottom on the right column
+            for(int i = top; i <= bottom; i++) {
+                result.push_back(matrix[i][right]);
+            }
+            right--; // Move right boundary left
 
-            if(top<=bottom){
-                for(int i=right;i>=left;i--)
-                ans.push_back(matrix[bottom][i]);
-
-                bottom--;
+            // Check if there are rows remaining
+            if(top <= bottom) {
+                // Traverse from right to left on the bottom row
+                for(int i = right; i >= left; i--) {
+                    result.push_back(matrix[bottom][i]);
+                }
+                bottom--; // Move bottom boundary up
             }
 
-            if(left<=right){
-               for(int i=bottom;i>=top;i--)
-               ans.push_back(matrix[i][left]);
-
-               left++;
+            // Check if there are columns remaining
+            if(left <= right) {
+                // Traverse from bottom to top on the left column
+                for(int i = bottom; i >= top; i--) {
+                    result.push_back(matrix[i][left]);
+                }
+                left++; // Move left boundary right
             }
         }
-        return ans;
+
+        // Return the final spiral order
+        return result;
     }
 };
