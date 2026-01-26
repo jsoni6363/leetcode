@@ -30,6 +30,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0739-daily-temperatures](https://github.com/jsoni6363/leetcode/tree/master/0739-daily-temperatures) |
 | [0792-binary-search](https://github.com/jsoni6363/leetcode/tree/master/0792-binary-search) |
 | [0860-design-circular-queue](https://github.com/jsoni6363/leetcode/tree/master/0860-design-circular-queue) |
+| [0867-transpose-matrix](https://github.com/jsoni6363/leetcode/tree/master/0867-transpose-matrix) |
 | [0883-car-fleet](https://github.com/jsoni6363/leetcode/tree/master/0883-car-fleet) |
 | [0973-k-closest-points-to-origin](https://github.com/jsoni6363/leetcode/tree/master/0973-k-closest-points-to-origin) |
 | [0994-rotting-oranges](https://github.com/jsoni6363/leetcode/tree/master/0994-rotting-oranges) |
@@ -135,6 +136,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0054-spiral-matrix](https://github.com/jsoni6363/leetcode/tree/master/0054-spiral-matrix) |
 | [0682-baseball-game](https://github.com/jsoni6363/leetcode/tree/master/0682-baseball-game) |
 | [0735-asteroid-collision](https://github.com/jsoni6363/leetcode/tree/master/0735-asteroid-collision) |
+| [0867-transpose-matrix](https://github.com/jsoni6363/leetcode/tree/master/0867-transpose-matrix) |
 | [1094-car-pooling](https://github.com/jsoni6363/leetcode/tree/master/1094-car-pooling) |
 | [1929-concatenation-of-array](https://github.com/jsoni6363/leetcode/tree/master/1929-concatenation-of-array) |
 ## Queue
@@ -302,6 +304,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0200-number-of-islands](https://github.com/jsoni6363/leetcode/tree/master/0200-number-of-islands) |
 | [0427-construct-quad-tree](https://github.com/jsoni6363/leetcode/tree/master/0427-construct-quad-tree) |
 | [0695-max-area-of-island](https://github.com/jsoni6363/leetcode/tree/master/0695-max-area-of-island) |
+| [0867-transpose-matrix](https://github.com/jsoni6363/leetcode/tree/master/0867-transpose-matrix) |
 | [0994-rotting-oranges](https://github.com/jsoni6363/leetcode/tree/master/0994-rotting-oranges) |
 ## Geometry
 |  |
